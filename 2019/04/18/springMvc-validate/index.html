@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="springboot,">
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="弦上的梦">
-<meta property="og:url" content="https://janche.github.io/index.html">
+<meta name="description" content="文档简介SpringBoot集成hibernate-validation快速使用说明 使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖  配置  SpringMVC的javabean 配置方式如下所示  注意：快速失败方式才需要配置下面的，默认可以不用配置。12345678910">
+<meta name="keywords" content="springboot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot集成hibernate-validation快速使用说明">
+<meta property="og:url" content="https://janche.github.io/2019/04/18/springMvc-validate/index.html">
 <meta property="og:site_name" content="弦上的梦">
+<meta property="og:description" content="文档简介SpringBoot集成hibernate-validation快速使用说明 使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖  配置  SpringMVC的javabean 配置方式如下所示  注意：快速失败方式才需要配置下面的，默认可以不用配置。12345678910">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-18T05:40:50.465Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦上的梦">
+<meta name="twitter:title" content="SpringBoot集成hibernate-validation快速使用说明">
+<meta name="twitter:description" content="文档简介SpringBoot集成hibernate-validation快速使用说明 使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖  配置  SpringMVC的javabean 配置方式如下所示  注意：快速失败方式才需要配置下面的，默认可以不用配置。12345678910">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://janche.github.io/">
+  <link rel="canonical" href="https://janche.github.io/2019/04/18/springMvc-validate/">
 
 
 
 
 
-  <title>弦上的梦</title>
+  <title>SpringBoot集成hibernate-validation快速使用说明 | 弦上的梦</title>
   
 
 
@@ -140,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -254,9 +258,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -286,9 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/18/springMvc-validate/" itemprop="url">SpringBoot集成hibernate-validation快速使用说明</a></h1>
+          <h1 class="post-title" itemprop="name headline">SpringBoot集成hibernate-validation快速使用说明</h1>
         
 
         <div class="post-meta">
@@ -338,9 +340,7 @@
       
 
       
-        
-          
-            <h2 id="文档简介"><a href="#文档简介" class="headerlink" title="文档简介"></a>文档简介</h2><p>SpringBoot集成hibernate-validation快速使用说明</p>
+        <h2 id="文档简介"><a href="#文档简介" class="headerlink" title="文档简介"></a>文档简介</h2><p>SpringBoot集成hibernate-validation快速使用说明</p>
 <h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><blockquote>
 <p><strong>依赖</strong></p>
 </blockquote>
@@ -401,8 +401,6 @@
 </ul>
 </blockquote>
 <h2 id="异常信息处理"><a href="#异常信息处理" class="headerlink" title="异常信息处理"></a>异常信息处理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(exception <span class="keyword">instanceof</span> ConstraintViolationException)&#123;</span><br><span class="line">    ConstraintViolationException exs = (ConstraintViolationException) exception;</span><br><span class="line">    Set&lt;ConstraintViolation&lt;?&gt;&gt; violations = exs.getConstraintViolations();</span><br><span class="line">    <span class="keyword">for</span> (ConstraintViolation&lt;?&gt; item : violations) &#123;</span><br><span class="line">        <span class="comment">//打印验证不通过的信息</span></span><br><span class="line">        System.out.println(item.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -417,262 +415,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janche.github.io/2019/04/18/我的随想录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Janche/lirong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦上的梦">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/18/我的随想录/" itemprop="url">Hexo-初体验</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T10:50:07+08:00">
-                2019-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>弦上的博客之第一篇，没有想象中的那么激情澎湃，或许成功喜悦的分量和过程艰辛的程度确是有很大关系，当然这很大程度上得感谢Hexo的开源，感谢我东哥的分享，在今后那些不曾起舞的日子里，愿我能常在此留下点滴的印记。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://janche.github.io/2019/04/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Janche/lirong">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="弦上的梦">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/17/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-17T16:58:22+08:00">
-                2019-04-17
-              </time>
+              <a href="/2019/04/18/我的随想录/" rel="next" title="Hexo-初体验">
+                <i class="fa fa-chevron-left"></i> Hexo-初体验
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -682,10 +454,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -693,6 +466,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -713,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -765,6 +551,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文档简介"><span class="nav-number">1.</span> <span class="nav-text">文档简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用步骤"><span class="nav-number">2.</span> <span class="nav-text">使用步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#两种常规校验"><span class="nav-number">3.1.</span> <span class="nav-text">两种常规校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组校验"><span class="nav-number">3.2.</span> <span class="nav-text">分组校验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的注解："><span class="nav-number">4.</span> <span class="nav-text">常见的注解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常信息处理"><span class="nav-number">5.</span> <span class="nav-text">异常信息处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -898,6 +700,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
