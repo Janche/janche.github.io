@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>Archives: 2019/4 | 弦上的梦</title>
+  <title>基于OpenCV对图片清晰度、色偏和亮度的检测（java版） | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="弦上的梦">
-<meta property="og:url" content="https://janche.github.io/archives/2019/04/index.html">
+  <meta name="description" content="由来：近期项目需要检测图片的亮度和色偏，但网上大多为用C实现的，没有java版本的，此篇为java版本对opencv的调用，谨以此献给CSDN的广大用户。 一. 导入OpenCV所需依赖依赖下载：OpenCV运行环境下载(包含jar包和dll依赖库)  在IDEA的项目模块下新建一个libs目录，将opencv-343.jar放进去，将opencv_java343.dll放到项目下。">
+<meta name="keywords" content="OpenCV,图像清晰度、亮度、色偏检测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于OpenCV对图片清晰度、色偏和亮度的检测（java版）">
+<meta property="og:url" content="https://janche.github.io/2019/04/26/OpenCV/index.html">
 <meta property="og:site_name" content="弦上的梦">
+<meta property="og:description" content="由来：近期项目需要检测图片的亮度和色偏，但网上大多为用C实现的，没有java版本的，此篇为java版本对opencv的调用，谨以此献给CSDN的广大用户。 一. 导入OpenCV所需依赖依赖下载：OpenCV运行环境下载(包含jar包和dll依赖库)  在IDEA的项目模块下新建一个libs目录，将opencv-343.jar放进去，将opencv_java343.dll放到项目下。">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190227135253598.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTk3OTA2,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-04-26T07:01:29.957Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦上的梦">
+<meta name="twitter:title" content="基于OpenCV对图片清晰度、色偏和亮度的检测（java版）">
+<meta name="twitter:description" content="由来：近期项目需要检测图片的亮度和色偏，但网上大多为用C实现的，没有java版本的，此篇为java版本对opencv的调用，谨以此献给CSDN的广大用户。 一. 导入OpenCV所需依赖依赖下载：OpenCV运行环境下载(包含jar包和dll依赖库)  在IDEA的项目模块下新建一个libs目录，将opencv-343.jar放进去，将opencv_java343.dll放到项目下。">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190227135253598.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTk3OTA2,size_16,color_FFFFFF,t_70">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -153,120 +160,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-OpenCV" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/mybatis的关联嵌套查询-分页详解/" class="archive-article-date">
-  	<time datetime="2019-04-26T07:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/mybatis的关联嵌套查询-分页详解/">mybatis的关联嵌套查询--分页详解</a>
+    <h1 class="article-title" itemprop="name">
+      基于OpenCV对图片清晰度、色偏和亮度的检测（java版）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">嵌套分页查询</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/docker部署springboot项目并连接mysql容器/" class="archive-article-date">
-  	<time datetime="2019-04-26T07:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/docker部署springboot项目并连接mysql容器/">docker部署springboot项目并连接mysql容器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/OpenCV/" class="archive-article-date">
+        
+        <a href="/2019/04/26/OpenCV/" class="archive-article-date">
   	<time datetime="2019-04-26T06:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/OpenCV/">基于OpenCV对图片清晰度、色偏和亮度的检测（java版）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>由来：近期项目需要检测图片的亮度和色偏，但网上大多为用C实现的，没有java版本的，此篇为java版本对opencv的调用，谨以此献给CSDN的广大用户。</strong></p>
+<h3 id="一-导入OpenCV所需依赖"><a href="#一-导入OpenCV所需依赖" class="headerlink" title="一. 导入OpenCV所需依赖"></a>一. 导入OpenCV所需依赖</h3><p><strong>依赖下载：</strong><a href="https://download.csdn.net/download/qq_34997906/10978639" target="_blank" rel="external">OpenCV运行环境下载(包含jar包和dll依赖库)</a></p>
+<ol>
+<li>在IDEA的项目模块下新建一个libs目录，将opencv-343.jar放进去，将opencv_java343.dll放到项目下。<a id="more"></a>
+如图：<br><img src="https://img-blog.csdnimg.cn/20190227135253598.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTk3OTA2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>注意：opencv_java343.dll文件很多时候会加载不了，放在系统的path路径下也是可以的，jdk目录以及windows32目录下都是可行的，如果有强迫症的话就放在项目下吧。</li>
+</ol>
+<ol start="2">
+<li>pom 文件依赖引入<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     	&lt;groupId&gt;org.opencv&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;opencv&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;0.0.1&lt;/version&gt;</span><br><span class="line">        &lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">        &lt;systemPath&gt;$&#123;project.basedir&#125;/libs/opencv-343.jar&lt;/systemPath&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="二-项目代码"><a href="#二-项目代码" class="headerlink" title="二. 项目代码"></a>二. 项目代码</h3><p><strong>1. 色偏检测</strong></p>
+<blockquote>
+<p><strong>原理说明： 网上常用的一种方法是将RGB图像转变到CIE L<em>a</em>b<em>空间，其中L</em>表示图像亮度，a<em>表示图像红/绿分量，b</em>表示图像黄/蓝分量。通常存在色偏的图像，在a<em>和b</em>分量上的均值会偏离原点很远，方差也会偏小；通过计算图像在a<em>和b</em>分量上的均值和方差，就可评估图像是否存在色偏。计算CIE L<em>a</em>b*空间是一个比较繁琐的过程，好在OpenCV提供了现成的函数，因此整个过程也不复杂。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * opencv 检测图片色偏</span><br><span class="line">     * jpegFile:待检测的图片</span><br><span class="line">     * calcCast 计算并返回一幅图像的色偏度以及，色偏方向</span><br><span class="line">     * cast 计算出的偏差值，小于1表示比较正常，大于1表示存在色偏</span><br><span class="line">     * da 红/绿色偏估计值，da大于0，表示偏红；da小于0表示偏绿</span><br><span class="line">     * db 黄/蓝色偏估计值，db大于0，表示偏黄；db小于0表示偏蓝</span><br><span class="line">     */</span><br><span class="line">    import org.opencv.core.Core;</span><br><span class="line">	import org.opencv.core.Mat;</span><br><span class="line">	import org.opencv.imgcodecs.Imgcodecs;</span><br><span class="line">	import org.opencv.imgproc.Imgproc;</span><br><span class="line">	</span><br><span class="line">    public static Boolean colorException(File jpegFile) &#123;</span><br><span class="line">        Mat srcImage = Imgcodecs.imread(jpegFile.getAbsolutePath());</span><br><span class="line">        Mat dstImage = new Mat();</span><br><span class="line">        //  将RGB图像转变到CIE L*a*b*</span><br><span class="line">        Imgproc.cvtColor(srcImage, dstImage, Imgproc.COLOR_BGR2Lab);</span><br><span class="line">        float a=0,b=0;</span><br><span class="line">        int HistA[] = new int[256],HistB[] = new int[256];</span><br><span class="line">        for(int i=0;i&lt;256;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            HistA[i]=0;</span><br><span class="line">            HistB[i]=0;</span><br><span class="line">        &#125;</span><br><span class="line">        int size= (int)dstImage.total() * dstImage.channels();</span><br><span class="line">        for(int i=0;i &lt; dstImage.rows(); i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j&lt; dstImage.cols(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                //在计算过程中，要考虑将CIEL*a*b*空间还原后同</span><br><span class="line">                a+=(float)(dstImage.get(i,j)[1]-128);</span><br><span class="line">                b+=(float)(dstImage.get(i,j)[2]-128);</span><br><span class="line">//                int x=Math.abs(dstImage.ptr(i,j).get(1));</span><br><span class="line">//                int y=Math.abs(dstImage.ptr(i,j).get(2));</span><br><span class="line">                int x=(int)dstImage.get(i,j)[1];</span><br><span class="line">                int y=(int)dstImage.get(i,j)[2];</span><br><span class="line">                HistA[x]++;</span><br><span class="line">                HistB[y]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        float  da=a/(float)(dstImage.rows() * dstImage.cols());</span><br><span class="line">        float db=b/(float)(dstImage.rows() * dstImage.cols());</span><br><span class="line">        float D= (float)Math.sqrt(da*da+db*db);</span><br><span class="line">        float Ma=0,Mb=0;</span><br><span class="line">        for(int i=0;i&lt;256;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            //计算范围-128～127</span><br><span class="line">            Ma+=Math.abs(i-128-da)*HistA[i];</span><br><span class="line">            Mb+=Math.abs(i-128-db)*HistB[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Ma/=(float)(dstImage.rows() * dstImage.cols());</span><br><span class="line">        Mb/=(float)(dstImage.rows() * dstImage.cols());</span><br><span class="line">        float M=(float)Math.sqrt(Ma*Ma+Mb*Mb);</span><br><span class="line">        float K=D/M;</span><br><span class="line">        float cast =K;</span><br><span class="line">        System.out.printf(&quot;色偏指数： %f\n&quot;,cast);</span><br><span class="line">        if(cast&gt;1.1) &#123;</span><br><span class="line">            System.out.printf(&quot;存在色偏\n&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            System.out.printf(&quot;不存在色偏\n&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>2. 亮度检测</strong></p>
+<blockquote>
+<p><strong>原理说明：计算图片在灰度图上的均值和方差，当存在亮度异常时，均值会偏离均值点（可以假设为128），方差也会偏小；通过计算灰度图的均值和方差，就可评估图像是否存在过曝光或曝光不足。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * opencv 检测图片亮度</span><br><span class="line">     * brightnessException 计算并返回一幅图像的色偏度以及，色偏方向</span><br><span class="line">     * cast 计算出的偏差值，小于1表示比较正常，大于1表示存在亮度异常；当cast异常时，da大于0表示过亮，da小于0表示过暗</span><br><span class="line">     * 返回值通过cast、da两个引用返回，无显式返回值</span><br><span class="line">     */</span><br><span class="line">    import org.opencv.core.Core;</span><br><span class="line">	import org.opencv.core.Mat;</span><br><span class="line">	import org.opencv.imgcodecs.Imgcodecs;</span><br><span class="line">	import org.opencv.imgproc.Imgproc;</span><br><span class="line">	</span><br><span class="line">    public static Integer brightnessException ( File jpegFile) &#123;</span><br><span class="line">        Mat srcImage = Imgcodecs.imread(jpegFile.getAbsolutePath());</span><br><span class="line">        Mat dstImage = new Mat();</span><br><span class="line">        // 将RGB图转为灰度图</span><br><span class="line">        Imgproc.cvtColor(srcImage,dstImage, Imgproc.COLOR_BGR2GRAY);</span><br><span class="line">        float a=0;</span><br><span class="line">        int Hist[] = new int[256];</span><br><span class="line">        for(int i=0;i&lt;256;i++) &#123;</span><br><span class="line">            Hist[i] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;dstImage.rows();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            for(int j=0;j&lt;dstImage.cols();j++)</span><br><span class="line">            &#123;</span><br><span class="line">                //在计算过程中，考虑128为亮度均值点</span><br><span class="line">                a+=(float)(dstImage.get(i,j)[0]-128);</span><br><span class="line">                int x=(int)dstImage.get(i,j)[0];</span><br><span class="line">                Hist[x]++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        float da =  a/(float)(dstImage.rows()*dstImage.cols());</span><br><span class="line">        System.out.println(da);</span><br><span class="line">        float D =Math.abs(da);</span><br><span class="line">        float Ma=0;</span><br><span class="line">        for(int i=0;i&lt;256;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            Ma+=Math.abs(i-128-da)*Hist[i];</span><br><span class="line">        &#125;</span><br><span class="line">        Ma/=(float)((dstImage.rows()*dstImage.cols()));</span><br><span class="line">        float M=Math.abs(Ma);</span><br><span class="line">        float K=D/M;</span><br><span class="line">        float cast = K;</span><br><span class="line">        System.out.printf(&quot;亮度指数： %f\n&quot;,cast);</span><br><span class="line">        if(cast&gt;=1) &#123;</span><br><span class="line">            System.out.printf(&quot;亮度：&quot;+da);</span><br><span class="line">            if(da &gt; 0) &#123;</span><br><span class="line">                System.out.printf(&quot;过亮\n&quot;);</span><br><span class="line">                return 2;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                System.out.printf(&quot;过暗\n&quot;);</span><br><span class="line">                return 1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.printf(&quot;亮度：正常\n&quot;);</span><br><span class="line">            return 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>3. 图片颜色检测</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">    * opencv 检测图片颜色</span><br><span class="line">    */</span><br><span class="line">   public static void imageColor ( File jpegFile) &#123;</span><br><span class="line">       Mat srcImage = Imgcodecs.imread(jpegFile.getAbsolutePath());</span><br><span class="line">       Mat dstImage = new Mat();</span><br><span class="line">       Imgproc.cvtColor(srcImage,dstImage, Imgproc.COLOR_BGR2HSV);</span><br><span class="line">       int i = 0 ,j = 0;</span><br><span class="line">       loop:for( i=0;i&lt;dstImage.rows();i++) &#123;</span><br><span class="line">           for(j=0;j&lt;dstImage.cols();j++) &#123;</span><br><span class="line">               //在计算过程中，考虑128为亮度均值点</span><br><span class="line">               double[] colorVec = dstImage.get(i,j);</span><br><span class="line">               int x=(int)dstImage.get(i,j)[0];</span><br><span class="line">               if((colorVec[0]&gt;=0&amp;&amp;colorVec[0]&lt;=180)</span><br><span class="line">                       &amp;&amp;(colorVec[1]&gt;=0&amp;&amp;colorVec[1]&lt;=255)</span><br><span class="line">                       &amp;&amp;(colorVec[2]&gt;=0&amp;&amp;colorVec[2]&lt;=46)) &#123;</span><br><span class="line">                   continue;</span><br><span class="line">               &#125;</span><br><span class="line">               else  if((colorVec[0]&gt;=0&amp;&amp;colorVec[0]&lt;=180)</span><br><span class="line">                       &amp;&amp;(colorVec[1]&gt;=0&amp;&amp;colorVec[1]&lt;=43)</span><br><span class="line">                       &amp;&amp;(colorVec[2]&gt;=46&amp;&amp;colorVec[2]&lt;=220))&#123;</span><br><span class="line">                   continue;</span><br><span class="line">               &#125;</span><br><span class="line">               else  if((colorVec[0]&gt;=0&amp;&amp;colorVec[0]&lt;=180)</span><br><span class="line">                       &amp;&amp;(colorVec[1]&gt;=0&amp;&amp;colorVec[1]&lt;=30)</span><br><span class="line">                       &amp;&amp;(colorVec[2]&gt;=221&amp;&amp;colorVec[2]&lt;=255))&#123;</span><br><span class="line">                   continue;</span><br><span class="line">               &#125;</span><br><span class="line">               else &#123;</span><br><span class="line">                   System.out.println(&quot;彩色图像&quot;);</span><br><span class="line">                   break loop;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       if(i==dstImage.rows() &amp;&amp; j==dstImage.cols()) &#123;</span><br><span class="line">           System.out.println(&quot;黑白图像&quot;);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4. 清晰度检测</strong><br>网上用opencv检测的各个版本均为c++/c#写的，二者的库依赖和方法变量名都存在较大的差异，转换太过麻烦，此处提供一个javacv的写法，以解部分老哥的燃眉之急。<br><strong>4.1 javacv依赖引入（依赖jar包较大）</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.bytedeco&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;javacv-platform&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.4.3&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import org.bytedeco.javacpp.opencv_core;</span><br><span class="line">import org.bytedeco.javacpp.opencv_imgcodecs;</span><br><span class="line">import org.bytedeco.javacpp.opencv_imgproc;</span><br><span class="line"></span><br><span class="line"> 	/**</span><br><span class="line">     * javacv 检测图片清晰度</span><br><span class="line">     * 标准差越大说明图像质量越好</span><br><span class="line">     */</span><br><span class="line">    public static void clarityException(File jpegFile)&#123;</span><br><span class="line">        String path = &quot;E:\\test\\&quot;;</span><br><span class="line">        opencv_core.Mat srcImage = opencv_imgcodecs.imread(jpegFile.getAbsolutePath());</span><br><span class="line">        opencv_core.Mat dstImage = new opencv_core.Mat();</span><br><span class="line">        //转化为灰度图</span><br><span class="line">        opencv_imgproc.cvtColor(srcImage, dstImage, opencv_imgproc.COLOR_BGR2GRAY);</span><br><span class="line">        //在gray目录下生成灰度图片</span><br><span class="line">        opencv_imgcodecs.imwrite(path+&quot;gray-&quot;+jpegFile.getName(), dstImage);</span><br><span class="line"></span><br><span class="line">        opencv_core.Mat laplacianDstImage = new opencv_core.Mat();</span><br><span class="line">        //阈值太低会导致正常图片被误断为模糊图片，阈值太高会导致模糊图片被误判为正常图片</span><br><span class="line">        opencv_imgproc.Laplacian(dstImage, laplacianDstImage, opencv_core.CV_64F);</span><br><span class="line">        //在laplacian目录下升成经过拉普拉斯掩模做卷积运算的图片</span><br><span class="line">        opencv_imgcodecs.imwrite(path+&quot;laplacian-&quot;+jpegFile.getName(), laplacianDstImage);</span><br><span class="line"></span><br><span class="line">        //矩阵标准差</span><br><span class="line">        opencv_core.Mat stddev = new opencv_core.Mat();</span><br><span class="line"></span><br><span class="line">        //求矩阵的均值与标准差</span><br><span class="line">        opencv_core.meanStdDev(laplacianDstImage, new opencv_core.Mat(), stddev);</span><br><span class="line">        // ((全部元素的平方)的和)的平方根</span><br><span class="line">        // double norm = Core.norm(laplacianDstImage);</span><br><span class="line">        // System.out.println(&quot;\n矩阵的均值：\n&quot; + mean.dump());</span><br><span class="line">        System.out.println(jpegFile.getName() + &quot;矩阵的标准差：\n&quot; + stddev.createIndexer().getDouble());</span><br><span class="line">        // System.out.println(jpegFile.getName()+&quot;平方根：\n&quot; + norm);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最后的叮嘱：项目部署到服务器时，一定注意将opencv_java343.dll放在系统的path路径下，或者Tomcat的bin目录下。</strong></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -282,125 +248,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQW7DMAwEwPz/0+61QGFnSTpBJY9OQeNKGh8YieTrFY/j18ifr/69ukp5YGBgLMs4Lsff5c++rf7vXc9jYGA8h3EdHHNGEkbPnrz+/GbPGBgYGMEm5vNgYGBgzBlVQJWahGYMDIwnM5KLZS+Jlr+UL93FMTAwFmRUE/3f/PyR+gYGBsZSjKM4qum26vHuaA0MDIy9GZOyYvWyen3gm1x9MTAw9mbkIS8PtXnqLT/jvZkHAwNja8YkRFaTX5NWsyhhh4GBsSljnoK/Xv761ZSLlHkuEAMDYyPGJ5ot5mWAahoOAwNjb0YvmFYDdx6gE8arGpsxMDAWZ+QP5Ue6SaNGnoYrpNswMDC2YOTb7R0i801U022v3lvHwMBYkPEfCgO9MicGBsYTGJPmrWqarFpUyF8xBgbG0xj58s1CY3zpHZ1nMTAwNmJUU/n51TQfk1LEadYQAwNjO0ae0K+m9fPrcb7RZiDGwMDYgpFfX/OzWa9Btpe8w8DA2JvRq3bmm56UJwsNZBgYGA9gzC+W1fJAr5BwQ7oNAwNjQUY1uTafpzdn4ScBAwNjI0YviT8JqdWWi+a7x8DA2IjRa4DotWLcNcMkWGNgYKzLyINs9brba5KoUjEwMJ7DqDZbVJe8K5V2OhsGBgZGnIC7q8xQbRfDwMDAyBu57kqclY+eGBgYD2BUL7HJYnmx4YbLMAYGxtaMaovDpGzZK0lOSqQYGBiLM34AYN3BF4nc/B8AAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/springmvc-validator/" class="archive-article-date">
-  	<time datetime="2019-04-23T14:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/04/23/springmvc-validator/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          springmvc-validator
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/04/26/docker部署springboot项目并连接mysql容器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker部署springboot项目并连接mysql容器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/springmvc-validator/">springmvc-validator</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/springboot//" class="article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/springboot/springmvc-validator//" class="article-tag-list-link color5">springmvc-validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/随想录/" class="archive-article-date">
-  	<time datetime="2019-04-23T13:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/随想录/">随想录</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">随想录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -423,8 +379,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

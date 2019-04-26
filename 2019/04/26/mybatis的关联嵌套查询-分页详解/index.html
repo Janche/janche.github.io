@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>Archives: 2019/4 | 弦上的梦</title>
+  <title>mybatis的关联嵌套查询--分页详解 | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="弦上的梦">
-<meta property="og:url" content="https://janche.github.io/archives/2019/04/index.html">
+  <meta name="description" content="问题描述1. mybatis嵌套查询后，分页混乱：mybatis通过查询结果之后折叠结果集把数据放在了集合里,这就导致总条数的混乱.而第一种的方式是分两次查询，分页只针对第一次查询,就不会有分页的问题,所以解决方案就是把你的collection写成第一种的方式2. 折叠结果集映射不上数据">
+<meta name="keywords" content="mybatis,嵌套分页查询">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis的关联嵌套查询--分页详解">
+<meta property="og:url" content="https://janche.github.io/2019/04/26/mybatis的关联嵌套查询-分页详解/index.html">
 <meta property="og:site_name" content="弦上的梦">
+<meta property="og:description" content="问题描述1. mybatis嵌套查询后，分页混乱：mybatis通过查询结果之后折叠结果集把数据放在了集合里,这就导致总条数的混乱.而第一种的方式是分两次查询，分页只针对第一次查询,就不会有分页的问题,所以解决方案就是把你的collection写成第一种的方式2. 折叠结果集映射不上数据">
+<meta property="og:updated_time" content="2019-04-26T07:06:49.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦上的梦">
+<meta name="twitter:title" content="mybatis的关联嵌套查询--分页详解">
+<meta name="twitter:description" content="问题描述1. mybatis嵌套查询后，分页混乱：mybatis通过查询结果之后折叠结果集把数据放在了集合里,这就导致总条数的混乱.而第一种的方式是分两次查询，分页只针对第一次查询,就不会有分页的问题,所以解决方案就是把你的collection写成第一种的方式2. 折叠结果集映射不上数据">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -153,36 +158,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-mybatis的关联嵌套查询-分页详解" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/mybatis的关联嵌套查询-分页详解/" class="archive-article-date">
-  	<time datetime="2019-04-26T07:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/mybatis的关联嵌套查询-分页详解/">mybatis的关联嵌套查询--分页详解</a>
+    <h1 class="article-title" itemprop="name">
+      mybatis的关联嵌套查询--分页详解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/26/mybatis的关联嵌套查询-分页详解/" class="archive-article-date">
+  	<time datetime="2019-04-26T07:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p><strong>1. mybatis嵌套查询后，分页混乱：mybatis通过查询结果之后折叠结果集把数据放在了集合里,这就导致总条数的混乱.而第一种的方式是分两次查询，分页只针对第一次查询,就不会有分页的问题,所以解决方案就是把你的collection写成第一种的方式</strong><br><strong>2. 折叠结果集映射不上数据</strong></p>
+<a id="more"></a>
+<h3 id="1-数据库"><a href="#1-数据库" class="headerlink" title="1. 数据库"></a>1. 数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-- 区域表：</span><br><span class="line">CREATE TABLE `area`  (</span><br><span class="line">  `id` bigint(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `parent_id` bigint(11),</span><br><span class="line">  `area_name` varchar(100),</span><br><span class="line">  `area_code` varchar(32),</span><br><span class="line">   PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">) ;</span><br><span class="line"></span><br><span class="line">-- 设备表</span><br><span class="line">CREATE TABLE `device`  (</span><br><span class="line">  `id` bigint(11) NOT NULL AUTO_INCREMENT,</span><br><span class="line">  `area_id` bigint(11),</span><br><span class="line">  `device_name` varchar(64),</span><br><span class="line">  `device_code` varchar(36),</span><br><span class="line">  `device_type` varchar(36),</span><br><span class="line">   PRIMARY KEY (`id`) USING BTREE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>关联说明：区域表和设备表是一对多的关系</strong></p>
+</blockquote>
+<h3 id="2-实体类"><a href="#2-实体类" class="headerlink" title="2. 实体类"></a>2. 实体类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 区域类的DTO</span><br><span class="line">package com.device.dto;</span><br><span class="line">import lombok.Data;</span><br><span class="line">import java.util.List;</span><br><span class="line">@Data  // 此注解提供了实体类get和set方法</span><br><span class="line">public class AreaOutpDTO &#123;</span><br><span class="line">    private Long id;</span><br><span class="line">    private Long parentId;</span><br><span class="line">    private String areaName;</span><br><span class="line">    private String areaCode;</span><br><span class="line">    private List&lt;DeviceTypeNumDTO&gt; devices; // 设备数量DTO集合</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 设备数量的DTO，注意这里不是直接的设备类，而是对设备类型和数量的一个统计，若是设备类的话，则也没有那么复杂了</span><br><span class="line">package com.device.dto;</span><br><span class="line">import lombok.Data;</span><br><span class="line">@Data</span><br><span class="line">public class DeviceTypeNumDTO &#123;</span><br><span class="line">    private String deviceType; // 设备类型</span><br><span class="line">    private Long deviceNum;	// 设备数量</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-Mapper-文件的编写"><a href="#3-Mapper-文件的编写" class="headerlink" title="3. Mapper 文件的编写"></a>3. Mapper 文件的编写</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">   &lt;resultMap id=&quot;AreaOutpDTOMap&quot; type=&quot;com.device.dto.AreaOutpDTO&quot;&gt;</span><br><span class="line">       &lt;id column=&quot;id&quot; jdbcType=&quot;BIGINT&quot; property=&quot;id&quot; /&gt;</span><br><span class="line">        &lt;result column=&quot;parent_id&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;parentId&quot; /&gt;</span><br><span class="line">       &lt;result column=&quot;area_name&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;areaName&quot; /&gt;</span><br><span class="line">       &lt;result column=&quot;area_code&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;areaCode&quot; /&gt;</span><br><span class="line">       &lt;!-- 设备 类型数量集合 --&gt;</span><br><span class="line">       &lt;collection property=&quot;devices&quot; ofType=&quot;com.device.dto.DeviceTypeNumDTO&quot;</span><br><span class="line">                   select=&quot;selectDeviceTypeNumDTO&quot;</span><br><span class="line">                   column=&quot;id&quot;&gt;</span><br><span class="line">                   &lt;!-- 下面这两行可以不用写，但写了也不会通过它映射，只能通过下面的DeviceTypeNumDTOMap进行映射 --&gt;</span><br><span class="line">                    &lt;!-- &lt;result column=&quot;device_type&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;deviceType&quot; /&gt;</span><br><span class="line">       	     		  	&lt;result column=&quot;device_num&quot; jdbcType=&quot;BIGINT&quot; property=&quot;deviceNum&quot; /&gt;--&gt;</span><br><span class="line">       &lt;/collection&gt;</span><br><span class="line">   &lt;/resultMap&gt;</span><br><span class="line">   </span><br><span class="line">&lt;!-- 此Map必须写，否则数据无法映射到devices中 --&gt;</span><br><span class="line">   &lt;resultMap id=&quot;DeviceTypeNumDTOMap&quot; type=&quot;com.device.dto.DeviceTypeNumDTO&quot;&gt;</span><br><span class="line">       &lt;result column=&quot;device_type&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;deviceType&quot; /&gt;</span><br><span class="line">       &lt;result column=&quot;device_num&quot; jdbcType=&quot;BIGINT&quot; property=&quot;deviceNum&quot; /&gt;</span><br><span class="line">   &lt;/resultMap&gt;</span><br><span class="line">   </span><br><span class="line">    &lt;select id=&quot;listSubArea&quot; resultMap=&quot;AreaOutpDTOMap&quot;&gt;</span><br><span class="line">       select</span><br><span class="line">       a.id,</span><br><span class="line">       a.parent_id,</span><br><span class="line">       a.area_name,</span><br><span class="line">       a.area_code,</span><br><span class="line">       from area a</span><br><span class="line">       where a.parent_id = #&#123;areaId&#125;</span><br><span class="line">   &lt;/select&gt;</span><br><span class="line">   &lt;select id=&quot;selectDeviceTypeNumDTO&quot; resultMap=&quot;DeviceTypeNumDTOMap&quot;&gt;</span><br><span class="line">     select</span><br><span class="line">       d.device_type, count(*) device_num</span><br><span class="line">     from device d</span><br><span class="line">     group by d.device_type, d.area_id</span><br><span class="line">     having d.area_id = #&#123;id&#125;</span><br><span class="line">   &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意事项：(大坑) 开始没有写DeviceTypeNumDTOMap，而是将映射的字段写在collection中，发现无论如何都不能在折叠结果集中取到数据，而SQL却又是被调用了的。</strong></p>
+</blockquote>
+<p><strong>上述Mapper的处理过程:</strong><br>在调用mapper接口中的<code>listArea</code>方法，首先调用SQL<code>select a.id,a.parent_id, a.area_name,a.area_code,from area a where a.parent_id = #{areaId}</code>，从数据库中拿到返回数据之后，开始做返回值映射，此时的返回值映射对象是一个<code>resultMap</code>（id:AreaOutpDTOMap），该resultMap实际上是一个<code>AreaOutpDTO</code>的实例，因此在开始做映射的时候，id和  parent_id,area_name,area_code,因为属性名和数据库返回值一致完成映射，但是到了<code>devices</code>属性的时候，发现他是一个<code>collection</code>集合对象，里面存放的是DeviceTypeNumDTO实例，那怎么获取里面的数据？看collection标签的属性，他需要关联一个查询操作<code>select=&quot;selectDeviceTypeNumDTO&quot;</code>获取其数据，即通过<code>select d.device_type, count(*) device_num from device d group by d.device_type, d.area_id having d.area_id = #{id}</code>获取collection中的数据，<code>select=&quot;selectPer&quot;</code>操作需要传入数据，传入的数据<code>column=&quot;id&quot;</code>即是第一次查询中返回的<code>id</code>，<strong>最后一步，就是将第二次查询出来的数据映射到collection中,切记一定要写一个<code>ResultMap</code>来接受，不能直接在collection中添加字段来映射。</strong></p>
+<h3 id="4-分页的处理"><a href="#4-分页的处理" class="headerlink" title="4. 分页的处理"></a>4. 分页的处理</h3><p><strong>经过上面的Mapper映射后，调用PageHelper插件已经是对折叠后的结果集进行分页了,成功解决分页总数混乱的问题</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   public List&lt;AreaOutpDTO&gt; listSubArea(Integer page, Integer size, String orderBy, Long areaId) &#123;</span><br><span class="line">       PageHelper.startPage(page, size, orderBy);</span><br><span class="line">       return areaMapper.listSubArea(areaId, categoryId);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="5-如果不分页，则采用mybatis的第二种映射方式"><a href="#5-如果不分页，则采用mybatis的第二种映射方式" class="headerlink" title="5. 如果不分页，则采用mybatis的第二种映射方式"></a>5. 如果不分页，则采用mybatis的第二种映射方式</h3><p><strong>仅改动Mapper文件，其余相同</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap id=&quot;AreaOutpDTOMap&quot; type=&quot;com.device.dto.AreaOutpDTO&quot;&gt;</span><br><span class="line">       &lt;id column=&quot;id&quot; jdbcType=&quot;BIGINT&quot; property=&quot;id&quot; /&gt;  </span><br><span class="line">       &lt;result column=&quot;parent_id&quot; jdbcType=&quot;BIGINT&quot; property=&quot;parentId&quot; /&gt;</span><br><span class="line">       &lt;result column=&quot;area_name&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;areaName&quot; /&gt;</span><br><span class="line">       &lt;result column=&quot;area_code&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;areaCode&quot; /&gt;</span><br><span class="line">	&lt;collection property=&quot;devices&quot; ofType=&quot;com.device.dto.DeviceTypeNumDTO&quot;&gt;</span><br><span class="line">        &lt;result column=&quot;device_type&quot; jdbcType=&quot;VARCHAR&quot; property=&quot;deviceType&quot; /&gt;</span><br><span class="line">      		&lt;result column=&quot;device_num&quot; jdbcType=&quot;BIGINT&quot; property=&quot;deviceNum&quot; /&gt;</span><br><span class="line">       &lt;/collection&gt;</span><br><span class="line">   &lt;/resultMap&gt;</span><br><span class="line">   </span><br><span class="line">  &lt;select id=&quot;listArea&quot; resultMap=&quot;AreaOutpDTOMap&quot;&gt;</span><br><span class="line">     select</span><br><span class="line">      a.id,</span><br><span class="line">      a.parent_id,</span><br><span class="line">      a.area_name,</span><br><span class="line">      a.area_code,</span><br><span class="line">      c.device_type,</span><br><span class="line">      c.device_num</span><br><span class="line">    from area a</span><br><span class="line">    left join (</span><br><span class="line">             select</span><br><span class="line">                    d.area_id, d.device_type, count(*) device_num</span><br><span class="line">             from device d</span><br><span class="line">             group by d.device_type, d.area_id) c</span><br><span class="line">            on a.id = c.area_id</span><br><span class="line">    where a.parent_id = #&#123;areaId&#125;</span><br><span class="line">   &lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p>转载请注明出处：<a href="https://blog.csdn.net/qq_34997906/article/details/84498115" target="_blank" rel="external">https://blog.csdn.net/qq_34997906/article/details/84498115</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -198,209 +238,110 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3awY7iMBAEUP7/p2elve4mVHXHDIfnEwKS+BnJNtV+veL287f9+87V+/dXXX169dyrZz3W8PDw8EZdv2r33UquTQZlNnDRc/Hw8PCO8e4Xg+R1e20CTob7jQUPDw/vV3l5R+8n93YzPRtWPDw8vG/g5fg2emgXITw8PLxv4CVhRMJot8KzT49kLXh4eHhdvloUwL7h9cH6Hh4eHt6iqt6WxPIo9tn7XN4fDw8P7wCvjVbz6GET9Sab8mLBwMPDwzvAa6PY9pGbmHi/2ODh4eGd4G3C1pyRLxJ5T+oCGB4eHt6alx9+mhWl8o3y/UCvKnt4eHh4h3l5Fzf/9/f3id7Bw8PDO8Brw9Z6t15+Jz/yVWy18fDw8A7w8kl/VspqQ9vhApAU8/Dw8PDWvDY+yCf09vDWbPje/Bh4eHh4h3mvoLWdmB1E2BwUeHNoAA8PD2/Ny0lPdSWnzhaq9gfDw8PDe4rXBqnJZN12Kx/QYZiLh4eHt+C1B5va4tMspMjvjIeHh/dJXh4ibIr9syLWq2z/6QkeHh7eMd6mSN8eEcgXpE2Mi4eHh/dbvOgWAWl2oCpnDxcGPDw8vBFvE9rmS0IyNDmgDaDx8PDwzvGSrredaA9gzZ71pkiGh4eHd4C3CVWT+GA2lJvg+LLKh4eHh/cRXh6nbr7fDlBdrsPDw8N7lLc/MtWGsJtNcxud4OHh4Z3jzYpY7YPzECGKGJK4BA8PD+9R3k/ZNoeuiqm8DG3fHLrCw8PDe5SXt1mxqr3bU4P1ahseHh5e2Yf8D//sqln4Oyt91WkKHh4e3oK3mZTb4wL5oMxiiCilxsPDw/sgb1b4n224ZwcLVgsDHh4e3qO8pLttPNFu6OtyGh4eHt4x3uYQQDKhz4ptm608Hh4e3jnebJu7L1DNpv4ihsDDw8N7nvcH5gHkKeN+IVQAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/docker部署springboot项目并连接mysql容器/" class="archive-article-date">
-  	<time datetime="2019-04-26T07:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/04/26/docker部署springboot项目并连接mysql容器/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          docker部署springboot项目并连接mysql容器
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/docker部署springboot项目并连接mysql容器/">docker部署springboot项目并连接mysql容器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/OpenCV/" class="archive-article-date">
-  	<time datetime="2019-04-26T06:57:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/OpenCV/">基于OpenCV对图片清晰度、色偏和亮度的检测（java版）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OpenCV</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图像清晰度、亮度、色偏检测</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/springmvc-validator/" class="archive-article-date">
-  	<time datetime="2019-04-23T14:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/springmvc-validator/">springmvc-validator</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/springboot//" class="article-tag-list-link color1">springboot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/springboot/springmvc-validator//" class="article-tag-list-link color5">springmvc-validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/23/随想录/" class="archive-article-date">
-  	<time datetime="2019-04-23T13:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/23/随想录/">随想录</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">随想录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/日志//" class="article-tag-list-link color3">日志</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -423,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
