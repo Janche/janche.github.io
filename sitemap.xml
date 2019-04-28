@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janche.github.io/2019/04/28/OAuth2/</loc>
+    
+    <lastmod>2019-04-28T01:10:46.222Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janche.github.io/2019/04/23/springmvc-validator/</loc>
     
     <lastmod>2019-04-26T07:34:20.272Z</lastmod>

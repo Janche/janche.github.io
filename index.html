@@ -155,6 +155,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-OAuth2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/28/OAuth2/">spring-security对OAuth2的集成（数据库的方式）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/28/OAuth2/" class="archive-article-date">
+  	<time datetime="2019-04-28T01:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<h5 id="教程由来：项目需要为第三方客户端提供授权和资源访问，无疑OAuth2现在是最好的方式，如果OAuth2相关知识大家还不够了解，请移步到阮一峰的理解OAuth2-0，本文实战为主，理论方面请自行查阅相关资料。"><a href="#教程由来：项目需要为第三方客户端提供授权和资源访问，无疑OAuth2现在是最好的方式，如果OAuth2相关知识大家还不够了解，请移步到阮一峰的理解OAuth2-0，本文实战为主，理论方面请自行查阅相关资料。" class="headerlink" title="教程由来：项目需要为第三方客户端提供授权和资源访问，无疑OAuth2现在是最好的方式，如果OAuth2相关知识大家还不够了解，请移步到阮一峰的理解OAuth2.0，本文实战为主，理论方面请自行查阅相关资料。"></a>教程由来：项目需要为第三方客户端提供授权和资源访问，无疑OAuth2现在是最好的方式，如果OAuth2相关知识大家还不够了解，请移步到阮一峰的<a href="https://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html">理解OAuth2.0</a>，本文实战为主，理论方面请自行查阅相关资料。</h5></blockquote>
+<h2 id="1-OAuth2的四种模式"><a href="#1-OAuth2的四种模式" class="headerlink" title="1. OAuth2的四种模式"></a>1. OAuth2的四种模式</h2><ul>
+<li>授权码模式（authorization code）(最正统的方式，也是目前绝大多数系统所采用的)(支持refresh token) (用在服务端应用之间)</li>
+<li>密码模式（resource owner password credentials）(为遗留系统设计) (支持refresh token)</li>
+<li>简化模式（implicit）(为web浏览器应用设计)(不支持refresh token) (用在移动app或者web app，这些app是在用户的设备上的，如在手机上调起微信来进行认证授权)</li>
+<li>客户端模式（client credentials）(为后台api服务消费者设计) (不支持refresh token) (为后台api服务消费者设计)<blockquote>
+<p><strong>本文采用数据库的方式对上述四种模式进行配置，网上绝大多数都是配置在内存中的demo，学习尚可，真实的开发环境却是还远远不够。</strong> </p>
+        
+          <a class="article-more-a" href="/2019/04/28/OAuth2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">spring-security-oauth2</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">oauth2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/28/OAuth2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mybatis的关联嵌套查询-分页详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -660,11 +747,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">图像清晰度、亮度、色偏检测</a>
+                <a href="javascript:void(0)" class="js-tag color2">-spring-security-oauth2 -oauth2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -676,11 +759,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">嵌套分页查询</a>
+                <a href="javascript:void(0)" class="js-tag color4">图像清晰度、亮度、色偏检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">随想录</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,7 +779,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">随想录</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">嵌套分页查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">-spring-security-oauth2 - oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">spring-security-oauth2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">oauth2</a>
               </li>
             
             <div class="clearfix"></div>
