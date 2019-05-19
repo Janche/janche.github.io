@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>Tag: mybatis | 弦上的梦</title>
+  <title>为什么要使用serialVersionUID | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="弦上的梦">
-<meta property="og:url" content="https://janche.github.io/tags/mybatis/index.html">
+  <meta name="description" content="1. 序列化是什么 把对象转换为字节序列的过程称为对象的序列化 。 把字节序列恢复为对象的过程称为对象的反序列化。  2. Java中如何使用序列化只需要让对象实现 Serializable接口即可，如下：">
+<meta name="keywords" content="序列化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为什么要使用serialVersionUID">
+<meta property="og:url" content="https://janche.github.io/2019/05/19/为什么要使用serialVersionUID/index.html">
 <meta property="og:site_name" content="弦上的梦">
+<meta property="og:description" content="1. 序列化是什么 把对象转换为字节序列的过程称为对象的序列化 。 把字节序列恢复为对象的过程称为对象的反序列化。  2. Java中如何使用序列化只需要让对象实现 Serializable接口即可，如下：">
+<meta property="og:updated_time" content="2019-05-19T12:25:19.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦上的梦">
+<meta name="twitter:title" content="为什么要使用serialVersionUID">
+<meta name="twitter:description" content="1. 序列化是什么 把对象转换为字节序列的过程称为对象的序列化 。 把字节序列恢复为对象的过程称为对象的反序列化。  2. Java中如何使用序列化只需要让对象实现 Serializable接口即可，如下：">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -159,64 +164,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-为什么要使用serialVersionUID" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/26/mybatis的关联嵌套查询-分页详解/" class="archive-article-date">
-  	<time datetime="2019-04-26T07:05:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-26</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/26/mybatis的关联嵌套查询-分页详解/">mybatis的关联嵌套查询--分页详解</a>
+    <h1 class="article-title" itemprop="name">
+      为什么要使用serialVersionUID
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/05/19/为什么要使用serialVersionUID/" class="archive-article-date">
+  	<time datetime="2019-05-19T09:53:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-序列化是什么"><a href="#1-序列化是什么" class="headerlink" title="1. 序列化是什么"></a>1. 序列化是什么</h3><ul>
+<li><strong>把对象转换为字节序列的过程称为对象的序列化 。</strong></li>
+<li><strong>把字节序列恢复为对象的过程称为对象的反序列化。</strong></li>
+</ul>
+<h3 id="2-Java中如何使用序列化"><a href="#2-Java中如何使用序列化" class="headerlink" title="2. Java中如何使用序列化"></a>2. Java中如何使用序列化</h3><p>只需要让对象实现 <code>Serializable</code>接口即可，如下：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc 序列化类</span><br><span class="line"> * @date 2019/05/18 12:04</span><br><span class="line"> */</span><br><span class="line">public class Person implements Serializable &#123;</span><br><span class="line"></span><br><span class="line">    private static final long serialVersionUID = 1L;</span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line">    public Person(int id, String name) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;Person: &quot; +</span><br><span class="line">                &quot;, id: &quot;+ id +</span><br><span class="line">                &quot;, name: &quot; + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>让我们来看看<code>Serializable</code> 接口都帮我们做了什么工作？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">If a serializable class does not explicitly declare a serialVersionUID,</span><br><span class="line">  then the serialization runtime will calculate a default </span><br><span class="line">  serialVersionUID value for that class based on various aspects of the class, </span><br><span class="line"> as described in the Java(TM) Object Serialization Specification.</span><br></pre></td></tr></table></figure>
+<p>大致意思就是：如果没有为Class显示的声明<code>serialVersionUID</code>的话，运行时JVM将默认为Class根据Class的各个字段属性生成一个<code>serialVersionUID</code>，具体生成方式就不做研究了，大致应该是根据各字段的hash值凑成的吧。</p>
+<h3 id="3-测试代码"><a href="#3-测试代码" class="headerlink" title="3. 测试代码"></a>3. 测试代码</h3><p><strong>3.1 序列化测试类：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc 序列化测试类</span><br><span class="line"> * @since 2019/05/18 12:09</span><br><span class="line"> */</span><br><span class="line">public class SerialTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException &#123;</span><br><span class="line">        Person person = new Person(1234, &quot;Janche&quot;);</span><br><span class="line">        System.out.println(&quot;Person Serial&quot; + person);</span><br><span class="line">        FileOutputStream fos = new FileOutputStream(&quot;Person.txt&quot;);</span><br><span class="line">        ObjectOutputStream oos = new ObjectOutputStream(fos);</span><br><span class="line">        oos.writeObject(person);</span><br><span class="line">        oos.flush();</span><br><span class="line">        oos.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.2 反序列化测试类</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc 反序列化测试类</span><br><span class="line"> * @date 2019/05/18 12:16</span><br><span class="line"> */</span><br><span class="line">public class DeserialTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) throws IOException, ClassNotFoundException &#123;</span><br><span class="line">        FileInputStream fis = new FileInputStream(&quot;Person.txt&quot;);</span><br><span class="line">        ObjectInputStream ois = new ObjectInputStream(fis);</span><br><span class="line">        Person person = (Person) ois.readObject();</span><br><span class="line">        ois.close();</span><br><span class="line">        System.out.println(&quot;Person Deserial&quot; + person);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<h4 id="4-测试条件"><a href="#4-测试条件" class="headerlink" title="4. 测试条件"></a>4. 测试条件</h4><p>a. 不实现<code>Serializable</code>接口<br>b. 实现<code>Serializable</code>接口<br>c. 未自定义<code>serialVersionUID</code>字段<br>d. 自定义<code>serialVersionUID</code>字段<br>e. 反序列化前增加字段<br>f. 反序列化前减少字段<br>g. 反序列化前修改字段的类型<br><strong>说明：反序列化前 表示 在序列化操作完成之后到反序列化开始之前这段时间，更改<code>Person</code>类的字段</strong></p>
+</blockquote>
+<blockquote>
+<h5 id="5-测试结果"><a href="#5-测试结果" class="headerlink" title="5. 测试结果"></a>5. 测试结果</h5><p>1.只要有a出现,就会导致<code>java.io.NotSerializableException</code>异常，即无法完成序列化。<br>2.当条件为 b+c  或者 b+d 时，序列化和反序列化均正常执行。<br>3.当条件为 b+c+e 或者 b+c+f 时，反序列化时将抛出<code>InvalidClassException</code>异常。<br>4.当条件为 b+d+e 或者 b+d+f 时，序列化和反序列一切正常，增加字段时，反序列化出来该字段为缺省值，减少字段时，反序列化出来也将没有此字段。<br>5.当条件包含 g 时，反序列化也将抛出<code>InvalidClassException</code>异常。</p>
+</blockquote>
+<blockquote>
+<h5 id="6-测试总结"><a href="#6-测试总结" class="headerlink" title="6. 测试总结"></a>6. 测试总结</h5><p><strong>1. 尽量为每一个需要序列化的类自定义<code>serialVersionUID</code>值，这样可避免因为Class中字段的修改而带来的反序列化异常。</strong><br><strong>2. 尽量不要修改序列化类中的字段类型，如果一定要修改，请重新序列化后再反序列化。</strong><br><strong>3. 如果要为序列化的类中忽略某个字段，可添加<code>transient</code>关键字</strong></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/images/weixinpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">嵌套分页查询</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">序列化</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aS27DMAwFwN7/0um2QBrlUST7AcaroHFljQKIMsmPj/h6fLme//L87fm/Xn0+j/k8/tiFh4eH15j6eejqA+7Y59HyOePh4eFt85Lhksec79leDjw8PLy/yWtt0wHmHLTw8PDw/i8vGvrqAJ0HGzw8PLzf5XVSqI/gypcgSYWs5Frw8PDwbk65hRTq735eqe/h4eHhtavqUyX8Tho3DwbfzBYPDw9vgVdNNCSlqXNC4S4gtUpoeHh4eD/C2wgS1eRsp/ELDw8Pb4+Xb/RJoStPyN4t4nluUWUPDw8Pb5R3Phwnm3vn22qhK2pxwMPDw1vjJQflTmk/HycPRdFRHg8PD2+Bl6cD8oCRTCK/vxNy8PDw8DZ41WRENQl7Vyq7K5i97IzAw8PDG+Xl23d+7O6EinyJC6lnPDw8vAXe7OTyQle1wNY53OPh4eHN8pJj7tREq5MrNAq8+hYPDw9vjZcPXU34VpPFnfDTqvLh4eHhFXn5Nn2+qo/P2w6qfQJ4eHh4G7ypCXUSFrNNV1F9Dw8PD2+I1285vWvYqpbckhcAPDw8vD1enjytPjK5/zIte7znZQEMDw8Pb4j3KF7JcuSBJE8HJ4f4N78bHh4e3hAvTwEkG/fdQlRHrgYVPDw8vA3e3RH5Ll2bB5U8wfFmbnh4eHhrvHyb7u/A1aRw6wCNh4eHt8bLC/x52rfadlBt7YqCEx4eHt4ar/PInJG3F3RSJ8MrioeHh1fcgvPAkCdbq+mMvJFrsXUADw8Pr7gPd6jVhoPO58uKHx4eHl6RV33tr94z1bKQB4by2wAeHh7eFe+ucnTXXDWbkniT2MXDw8P7Y7w8AZGzyyWuvcCAh4eHN8SrbuWdoFKtZBUKf3h4eHhtXqfoVe5WGE1GREdqPDw8vFFe/4X/LlRUm7cGGHh4eHhd3idhY5xxEFO5TAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/04/28/OAuth2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          spring-security对OAuth2的集成（数据库的方式）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "Sun May 19 2019 17:53:52 GMT+0800",
+  owner: 'janche',
+  repo: 'gitment-blog',
+  oauth: {
+    client_id: 'c455ec8a4dddd5ee4b5e',
+    client_secret: '487469380631f670293e27f4149c3d3413ca236e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -239,9 +395,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
