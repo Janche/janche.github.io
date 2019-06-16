@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janche.github.io/photos/data.json</loc>
+    
+    <lastmod>2019-06-16T08:40:00.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://janche.github.io/photos/index.html</loc>
+    
+    <lastmod>2019-06-16T08:16:10.942Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://janche.github.io/photos/photoslist.json</loc>
+    
+    <lastmod>2019-06-16T03:07:25.433Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janche.github.io/2019/06/16/Runtime-%E8%B0%83%E7%94%A8Process-waitfor%E5%AF%BC%E8%87%B4%E7%9A%84%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2019-06-16T01:38:39.581Z</lastmod>
