@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://janche.github.io/2019/06/16/Runtime-%E8%B0%83%E7%94%A8Process-waitfor%E5%AF%BC%E8%87%B4%E7%9A%84%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2019-06-16T15:09:37.974Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://janche.github.io/2019/06/16/Hexo-Github%E5%AE%9E%E7%8E%B0%E7%9B%B8%E5%86%8C%E5%92%8C%E9%9F%B3%E9%A2%91%E5%8A%9F%E8%83%BD/</loc>
+    
+    <lastmod>2019-06-16T15:08:56.217Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://janche.github.io/photos/index.html</loc>
     
     <lastmod>2019-06-16T12:30:20.244Z</lastmod>
@@ -11,21 +25,7 @@
   <url>
     <loc>https://janche.github.io/photos/data.json</loc>
     
-    <lastmod>2019-06-16T10:12:56.092Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janche.github.io/photos/photoslist.json</loc>
-    
-    <lastmod>2019-06-16T03:07:25.433Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://janche.github.io/2019/06/16/Runtime-%E8%B0%83%E7%94%A8Process-waitfor%E5%AF%BC%E8%87%B4%E7%9A%84%E9%98%BB%E5%A1%9E%E9%97%AE%E9%A2%98/</loc>
-    
-    <lastmod>2019-06-16T01:38:39.581Z</lastmod>
+    <lastmod>2019-06-16T10:12:56.097Z</lastmod>
     
   </url>
   
