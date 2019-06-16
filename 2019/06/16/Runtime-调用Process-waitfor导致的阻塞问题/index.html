@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>springmvc-validator | 弦上的梦</title>
+  <title>Runtime 调用Process.waitfor导致的阻塞问题 | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
-<meta name="keywords" content="springmvc,validator">
+  <meta name="description" content="1. 关于Runtime类的小知识 1. Runtime.getRuntime()可以取得当前JVM的运行时环境，这也是在Java中唯一一个得到运行时环境的方法2. Runtime中的exit方法是退出JVM  2. Runtime的几个重要的重载方法">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springmvc-validator">
-<meta property="og:url" content="https://janche.github.io/2019/04/23/springmvc-validator/index.html">
+<meta property="og:title" content="Runtime 调用Process.waitfor导致的阻塞问题">
+<meta property="og:url" content="https://janche.github.io/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/index.html">
 <meta property="og:site_name" content="弦上的梦">
-<meta property="og:description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
-<meta property="og:updated_time" content="2019-04-26T07:34:20.272Z">
+<meta property="og:description" content="1. 关于Runtime类的小知识 1. Runtime.getRuntime()可以取得当前JVM的运行时环境，这也是在Java中唯一一个得到运行时环境的方法2. Runtime中的exit方法是退出JVM  2. Runtime的几个重要的重载方法">
+<meta property="og:updated_time" content="2019-06-16T01:38:39.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springmvc-validator">
-<meta name="twitter:description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
+<meta name="twitter:title" content="Runtime 调用Process.waitfor导致的阻塞问题">
+<meta name="twitter:description" content="1. 关于Runtime类的小知识 1. Runtime.getRuntime()可以取得当前JVM的运行时环境，这也是在Java中唯一一个得到运行时环境的方法2. Runtime中的exit方法是退出JVM  2. Runtime的几个重要的重载方法">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -164,88 +164,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-springmvc-validator" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Runtime-调用Process-waitfor导致的阻塞问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      springmvc-validator
+      Runtime 调用Process.waitfor导致的阻塞问题
     </h1>
   
 
         
-        <a href="/2019/04/23/springmvc-validator/" class="archive-article-date">
-  	<time datetime="2019-04-23T14:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
+        <a href="/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/" class="archive-article-date">
+  	<time datetime="2019-06-16T01:34:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Spring-Boot-数据校验框架-springmvc-validator-使用说明"><a href="#Spring-Boot-数据校验框架-springmvc-validator-使用说明" class="headerlink" title="Spring Boot 数据校验框架 springmvc-validator 使用说明"></a>Spring Boot 数据校验框架 springmvc-validator 使用说明</h1><h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><blockquote>
-<p><strong>依赖</strong></p>
+        <h3 id="1-关于Runtime类的小知识"><a href="#1-关于Runtime类的小知识" class="headerlink" title="1. 关于Runtime类的小知识"></a>1. 关于Runtime类的小知识</h3><blockquote>
+<p><strong>1. Runtime.getRuntime()可以取得当前JVM的运行时环境，这也是在Java中唯一一个得到运行时环境的方法</strong><br><strong>2. Runtime中的exit方法是退出JVM</strong></p>
 </blockquote>
-<p><code>hibernate-validation</code>,<code>validation-api</code>已经被添加在<code>spring-boot-starter-web</code>内，所以不需要添加依赖</p>
-<a id="more"></a>
+<h3 id="2-Runtime的几个重要的重载方法"><a href="#2-Runtime的几个重要的重载方法" class="headerlink" title="2. Runtime的几个重要的重载方法"></a>2. Runtime的几个重要的重载方法</h3><a id="more"></a>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exec(String command);</td>
+<td>在单独的进程中执行指定的字符串命令。</td>
+</tr>
+<tr>
+<td>exec(String command, String[] envp)</td>
+<td>在指定环境的单独进程中执行指定的字符串命令。</td>
+</tr>
+<tr>
+<td>exec(String[] cmdarray, String[] envp, File dir)</td>
+<td>在指定环境和工作目录的独立进程中执行指定的命令和变量</td>
+</tr>
+<tr>
+<td>exec(String command, String[] envp, File dir)</td>
+<td>在有指定环境和工作目录的独立进程中执行指定的字符串命令。</td>
+</tr>
+</tbody>
+</table>
+<p>Runtime类的重要的方法还有很多，简单列举几个</p>
 <blockquote>
-<p><strong>配置</strong></p>
+<p>1.exit(int status)：终止当前正在运行的 Java 虚拟机<br>2.freeMemory()： 返回 Java 虚拟机中的空闲内存量。<br>3.load(String filename)： 加载作为动态库的指定文件名。<br>4.loadLibrary(String libname)： 加载具有指定库名的动态库。</p>
 </blockquote>
-<p>SpringMVC的<code>javabean</code> 配置方式如下所示</p>
+<h3 id="3-Runtime的使用方式"><a href="#3-Runtime的使用方式" class="headerlink" title="3. Runtime的使用方式"></a>3. Runtime的使用方式</h3><p><strong>3.1 错误的使用exitValue()</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">      String command = &quot;ping www.baidu.com&quot;;</span><br><span class="line">      Process process = Runtime.getRuntime().exec(command);</span><br><span class="line">      int i = process.exitValue();</span><br><span class="line">      System.out.println(&quot;字进程退出值：&quot;+i);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>输出：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.IllegalThreadStateException: process has not exited</span><br><span class="line">	at java.lang.ProcessImpl.exitValue(ProcessImpl.java:443)</span><br><span class="line">	at com.lirong.think.runtime.ProcessUtils.main(ProcessUtils.java:26)</span><br></pre></td></tr></table></figure></p>
+<p><strong>原因：</strong></p>
 <blockquote>
-<p>注意：快速失败方式才需要配置下面的，默认可以不用配置。</p>
+<p>exitValue()方法是非阻塞的，在调用这个方法时cmd命令并没有返回所以引起异常。阻塞形式的方法是waitFor，它会一直等待外部命令执行完毕，然后返回执行的结果。</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Validator <span class="title">validator</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ValidatorFactory validatorFactory = Validation.byProvider( HibernateValidator.class )</span><br><span class="line">            .configure()</span><br><span class="line">            .addProperty( <span class="string">"hibernate.validator.fail_fast"</span>, <span class="string">"true"</span> ) <span class="comment">//为true时代表快速失败模式，false则为全部校验后再结束。</span></span><br><span class="line">            .buildValidatorFactory();</span><br><span class="line">    Validator validator = validatorFactory.getValidator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> validator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="两种常规校验"><a href="#两种常规校验" class="headerlink" title="两种常规校验"></a>两种常规校验</h3><blockquote>
-<ol>
-<li>在<code>Controller</code>类上加入<code>@Validated</code>注解</li>
-<li>在方法参数中添加相应的注解</li>
-<li>注意：若方法参数上没有<code>@Validated</code>注解，则需要在类上加<code>@Validated</code>注解</li>
-</ol>
+<p><strong>修改后的版本：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws IOException &#123;</span><br><span class="line">      String command = &quot;javac&quot;;</span><br><span class="line">      Process process = Runtime.getRuntime().exec(command);</span><br><span class="line">      process.waitFor();</span><br><span class="line">      process.destroy();</span><br><span class="line">      int i = process.exitValue();</span><br><span class="line">      System.out.println(&quot;字进程退出值：&quot;+i);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>此版本已然可以正常运行，但当主线程和子线程有很多交互的时候还是会出问题，会出现卡死的情况。</strong></p>
+<h4 id="4-卡死原因"><a href="#4-卡死原因" class="headerlink" title="4. 卡死原因"></a>4. 卡死原因</h4><blockquote>
+<p><strong>主进程中调用Runtime.exec会创建一个子进程，用于执行cmd命令。子进程创建后会和主进程分别独立运行。<br> 因为主进程需要等待脚本执行完成，然后对命令返回值或输出进行处理，所以这里主进程调用Process.waitfor等待子进程完成。<br> 运行此cmd命令可以知道：子进程执行过程就是打印信息。主进程中可以通过Process.getInputStream和Process.getErrorStream获取并处理。<br> 这时候子进程不断向主进程发生数据，而主进程调用Process.waitfor后已挂起。当前子进程和主进程之间的缓冲区塞满后，子进程不能继续写数据，然后也会挂起。<br>这样子进程等待主进程读取数据，主进程等待子进程结束，两个进程相互等待，最终导致死锁。</strong></p>
 </blockquote>
-<blockquote>
-<p>参数为实体类对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRole</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@NotNull</span>(message = <span class="string">"角色名称不能为空"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Size</span>(min = <span class="number">6</span>, max = <span class="number">20</span>, message = <span class="string">"描述必须在6-20个字符之间"</span>)</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"create_time"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(@Valid SysRole sysRole, BindingResult result)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (result.hasErrors()) &#123;</span><br><span class="line">	     List&lt;ObjectError&gt; allErrors = result.getAllErrors();</span><br><span class="line">	     StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	     <span class="keyword">for</span> (ObjectError objectError : allErrors) &#123;</span><br><span class="line">	         sb.append(objectError.getDefaultMessage() + <span class="string">";"</span>);</span><br><span class="line">	     &#125;</span><br><span class="line">	     <span class="keyword">throw</span> <span class="keyword">new</span> ServiceException(sb.toString());  <span class="comment">// 此处一定要抛出异常，否则校验框架不起作用。</span></span><br><span class="line">	 &#125;</span><br><span class="line">    <span class="comment">//do something  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>参数为单个字段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo2</span><span class="params">(@Min(value = <span class="number">1</span>, message = <span class="string">"班级最小只能1"</span>)</span></span></span><br><span class="line"><span class="function">                   @<span class="title">Max</span><span class="params">(value = <span class="number">99</span>, message = <span class="string">"班级最大只能99"</span>)</span></span></span><br><span class="line"><span class="function">                   @<span class="title">RequestParam</span><span class="params">(name = <span class="string">"classroom"</span>, required = <span class="keyword">true</span>)</span> <span class="keyword">int</span> classroom) </span>&#123;</span><br><span class="line">                 <span class="comment">//do something  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="分组校验"><a href="#分组校验" class="headerlink" title="分组校验"></a>分组校验</h3><blockquote>
-<p><strong>1.新建两个接口</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RoleUpdate</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RoleAdd</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>2.实体类中给字段加入分组</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRole</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"角色ID不能为空"</span>, groups = &#123;RoleUpdate.class&#125;)</span><br><span class="line">    <span class="keyword">protected</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"角色名称不能为空"</span>, groups = &#123;RoleAdd.class&#125;)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>3.Controller中的使用</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sys/role"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRoleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/add"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestResult <span class="title">add</span><span class="params">(@Validated(&#123;RoleAdd.class&#125;)</span> SysRole sysRole, BindingResult result)</span>&#123;</span><br><span class="line">        CoreUtil.validationHandler(result);</span><br><span class="line">        sysRoleService.addRole(sysRole);</span><br><span class="line">        <span class="keyword">return</span> ResultGenerator.genSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/update"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestResult <span class="title">update</span><span class="params">(@Validated(&#123;RoleUpdate.class&#125;)</span> SysRole sysRole, BindingResult result) </span>&#123;</span><br><span class="line">        CoreUtil.validationHandler(result);</span><br><span class="line">        sysRoleService.update(sysRole);</span><br><span class="line">        <span class="keyword">return</span> ResultGenerator.genSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>4.组序列的使用：</strong></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定组的验证顺序，前面组验证不通过的，后面组不进行验证</span></span><br><span class="line"><span class="meta">@GroupSequence</span>(&#123;RoleAdd.class, RoleUpdate.class, Default.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GroupOrder</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="常见的注解："><a href="#常见的注解：" class="headerlink" title="常见的注解："></a>常见的注解：</h2><blockquote>
-<p>所有注解均有message这个参数，即你需要返回或捕获的内容</p>
-<ul>
-<li><code>@Null(message=&quot;&quot;)</code>   被注释的元素必须为 null     </li>
-<li><code>@NotNull</code>   被注释的元素必须不为 null     </li>
-<li><code>@AssertTrue</code>     被注释的元素必须为 true     </li>
-<li><code>@AssertFalse</code>    被注释的元素必须为 false     </li>
-<li><code>@Min(value)</code>     被注释的元素必须是一个数字，其值必须大于等于指定的最小值     </li>
-<li><code>@Max(value)</code>    被注释的元素必须是一个数字，其值必须小于等于指定的最大值     </li>
-<li><code>@DecimalMin(value)</code>  被注释的元素必须是一个数字，其值必须大于等于指定的最小值     </li>
-<li><code>@DecimalMax(value)</code>  被注释的元素必须是一个数字，其值必须小于等于指定的最大值     </li>
-<li><code>@Size(max=, min=)</code>   被注释的元素的大小必须在指定的范围内     </li>
-<li><code>@Digits (integer, fraction)</code>     被注释的元素必须是一个数字，其值必须在可接受的范围内     </li>
-<li><code>@Past</code>   被注释的元素必须是一个过去的日期     </li>
-<li><code>@Future</code>    被注释的元素必须是一个将来的日期     </li>
-<li><code>@Pattern(regex=,flag=)</code>  被注释的元素必须符合指定的正则表达式     </li>
-<li><code>@Email</code>  被注释的元素必须是电子邮箱地址     </li>
-<li><code>@Length(min=,max=)</code>  被注释的字符串的大小必须在指定的范围内     </li>
-<li><code>@NotEmpty</code>   被注释的字符串的必须非空     </li>
-<li><code>@Range(min=,max=,message=)</code>  被注释的元素必须在合适的范围内</li>
-</ul>
-</blockquote>
-<h2 id="异常信息处理"><a href="#异常信息处理" class="headerlink" title="异常信息处理"></a>异常信息处理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(exception <span class="keyword">instanceof</span> ConstraintViolationException)&#123;</span><br><span class="line">    ConstraintViolationException exs = (ConstraintViolationException) exception;</span><br><span class="line">    Set&lt;ConstraintViolation&lt;?&gt;&gt; violations = exs.getConstraintViolations();</span><br><span class="line">    <span class="keyword">for</span> (ConstraintViolation&lt;?&gt; item : violations) &#123;</span><br><span class="line">        <span class="comment">//打印验证不通过的信息</span></span><br><span class="line">        System.out.println(item.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="5-解决方案"><a href="#5-解决方案" class="headerlink" title="5. 解决方案"></a>5. 解决方案</h4><p>不断的读取消耗缓冲区的数据，以至子进程不会挂起，下面是具体代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc CMD命令测试</span><br><span class="line"> * @date 2019/06/13 20:50</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">public class ProcessUtils &#123;</span><br><span class="line">    public static void main(String[] args) throws IOException, InterruptedException &#123;</span><br><span class="line">        String command = &quot;ping www.baidu.com&quot;;</span><br><span class="line">        Process process = Runtime.getRuntime().exec(command);</span><br><span class="line">        readStreamInfo(process.getInputStream(), process.getErrorStream());</span><br><span class="line">        int exit = process.waitFor();</span><br><span class="line">        process.destroy();</span><br><span class="line">        if (exit == 0) &#123;</span><br><span class="line">            log.debug(&quot;子进程正常完成&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            log.debug(&quot;子进程异常结束&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 读取RunTime.exec运行子进程的输入流 和 异常流</span><br><span class="line">     * @param inputStreams 输入流</span><br><span class="line">     */</span><br><span class="line">    public static void readStreamInfo(InputStream... inputStreams)&#123;</span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(inputStreams.length);</span><br><span class="line">        for (InputStream in : inputStreams) &#123;</span><br><span class="line">            executorService.execute(new MyThread (in));</span><br><span class="line">        &#125;</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc</span><br><span class="line"> * @date 2019/06/13 21:25</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">public class MyThread implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">    private InputStream in;</span><br><span class="line">    public MyThread(InputStream in)&#123;</span><br><span class="line">        this.in = in;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            BufferedReader br = new BufferedReader(new InputStreamReader(in, &quot;GBK&quot;));</span><br><span class="line">            String line = null;</span><br><span class="line">            while((line = br.readLine())!=null)&#123;</span><br><span class="line">                log.debug(&quot; inputStream: &quot; + line);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;catch (IOException e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;finally &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                in.close();</span><br><span class="line">            &#125; catch (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写到这里大家以为都结束了哇，并没有，哈哈哈，真实的生成环境总能给你带来很多神奇的问题，Runtime不仅可以直接调用CMD执行命令，还可以调用其他.exe程序执行命令。所以纵使你读取了缓冲区的数据，你的程序依然可能会被卡死，因为有可能你的缓冲区根本就没有数据，而是你的.exe程序卡主了。嗯，所以为你以防万一，你还需要设置超时。</p>
+<h3 id="6-Runtime最优雅的调用方式"><a href="#6-Runtime最优雅的调用方式" class="headerlink" title="6. Runtime最优雅的调用方式"></a>6. Runtime最优雅的调用方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @author lirong</span><br><span class="line"> * @desc</span><br><span class="line"> * @date 2019/06/13 20:50</span><br><span class="line"> */</span><br><span class="line">@Slf4j</span><br><span class="line">public class ProcessUtils &#123;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">     * @param timeout 超时时长</span><br><span class="line">     * @param fileDir 所运行程序路径</span><br><span class="line">     * @param command 程序所要执行的命令</span><br><span class="line">     * 运行一个外部命令，返回状态.若超过指定的超时时间，抛出TimeoutException</span><br><span class="line">     */</span><br><span class="line">    public static int executeProcess(final long timeout, File fileDir, final String[] command)</span><br><span class="line">            throws IOException, InterruptedException, TimeoutException &#123;</span><br><span class="line">        Process process = Runtime.getRuntime().exec(command, null, fileDir);</span><br><span class="line">        Worker worker = new Worker(process);</span><br><span class="line">        worker.start();</span><br><span class="line">        try &#123;</span><br><span class="line">            worker.join(timeout);</span><br><span class="line">            if (worker.exit != null)&#123;</span><br><span class="line">                return worker.exit;</span><br><span class="line">            &#125; else&#123;</span><br><span class="line">                throw new TimeoutException();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (InterruptedException ex) &#123;</span><br><span class="line">            worker.interrupt();</span><br><span class="line">            Thread.currentThread().interrupt();</span><br><span class="line">            throw ex;</span><br><span class="line">        &#125;</span><br><span class="line">        finally &#123;</span><br><span class="line">            process.destroy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    private static class Worker extends Thread &#123;</span><br><span class="line">        private final Process process;</span><br><span class="line">        private Integer exit;</span><br><span class="line"></span><br><span class="line">        private Worker(Process process) &#123;</span><br><span class="line">            this.process = process;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        public void run() &#123;</span><br><span class="line">            InputStream errorStream = null;</span><br><span class="line">            InputStream inputStream = null;</span><br><span class="line">            try &#123;</span><br><span class="line">                errorStream = process.getErrorStream();</span><br><span class="line">                inputStream = process.getInputStream();</span><br><span class="line">                readStreamInfo(errorStream, inputStream);</span><br><span class="line">                exit = process.waitFor();</span><br><span class="line">                process.destroy();</span><br><span class="line">                if (exit == 0) &#123;</span><br><span class="line">                    log.debug(&quot;子进程正常完成&quot;);</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    log.debug(&quot;子进程异常结束&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (InterruptedException ignore) &#123;</span><br><span class="line">                return;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 读取RunTime.exec运行子进程的输入流 和 异常流</span><br><span class="line">     * @param inputStreams 输入流</span><br><span class="line">     */</span><br><span class="line">    public static void readStreamInfo(InputStream... inputStreams)&#123;</span><br><span class="line">        ExecutorService executorService = Executors.newFixedThreadPool(inputStreams.length);</span><br><span class="line">        for (InputStream in : inputStreams) &#123;</span><br><span class="line">            executorService.execute(new MyThread(in));</span><br><span class="line">        &#125;</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -284,21 +272,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -349,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aQW6EMAwF0Ln/pem21Qjm22Eq4bysEGKKHws3tvN6xev4td7vnz2Z/Or9+v352xYGBsZjGcflqjKqf//sXXlsGBgY+zDOXp9f5wm0moKvY8PAwMBYp56RqhtHDAwMjB6jly7zBI2BgYFRLWKTBly1YZc34G6rxTEwMB7IyIP4/+uvzDcwMDAexTiKq1eO5kPKo7UwMDBmM3pjyCTQXohL8WBgYAxlJCm1V9AmpeZtRzowMDBGM9ZHktefo9pu6x0Xw8DAmM3oHR7tbRzzhn659YaBgTGa0UuySbjVj3LDNhEDA2M0Y72wrKbRXjFcTr4YGBgjGEk7LC9Bq4l1ZbT5570YGBijGdXasNp6S5Jmr0hu/ifBwMB4IGM9/eVttWq6LLT2MDAwtmH0kmB1DNnbgH64g4GBsQEj3wJWw10ZIRTAGBgYoxl5UbrCSErc6rABAwNjN0ZvMNl7fd7zWxqdYmBgjGMkQ8f8BSuHMKojz2jHioGBMY7RK2JXxgnVcKOEi4GBMZRxQ8pbaMz1UjkGBsZujN6gsQpb30SeRouBgTGUcRRX/m2ST3NbisfAwBjNyFfvkMS9ZWpeMGNgYMxjJEk2b8b1ytfCThYDA2NjRvXgRZLFv7Ht+1DKYmBgYMRHNHpNt5WzExgYGBjrCTE/otErhjEwMHZgJEVsHkT04oX0ioGBsRsjT6P5M9Xnr+/nowgMDIxxjB8gFwPx0RUSegAAAABJRU5ErkJggg==" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLElEQVR42u3awY7iQAwEUP7/p1lpr7tAlR000PP6hEak6ZdIY9mV2y1e97/r+efNerTP/Z+VX3u79ljY2NjYH8y+P12Ptk4OlF/76DvPT/voMST7Y2NjY5/HTopWXioeHS4H57+eFFRsbGxs7KREJSu/9nmZzAstNjY2NnbSAOTXJkWrHR5hY2NjY+dDpaSEzAZDz8dP7cO4eJaGjY2N/fHsq4LeT/j8A/k2NjY29o+y7+Vqw4BZe5MHwPfRwsbGxj6JnTcAeQSbxwCz8dNV58HGxsY+m715UWb/ok977fCVI2xsbOwj2O3WSXnIo9xNCNE2Hv95ztjY2NhHsPO2pC0tbXvwjjJZlE9sbGzsr2Xv71NbcvYNTxtC3PKfxMbGxv5Cdtt45MfKD9QGAMktqFsRbGxs7C9n7wf6LXXTCM2GTZdlEdjY2Ngfyc4H7u2wKR/obwLj/BexsbGxfye7bU5a8KYUzb6DjY2NfTY7byTe2B6M4oRhRIGNjY395ew26J0N5dsgedMCJbcDGxsb+zx2Xus238mD3rYdavfExsbGPomdv+DSDvrb4KFtYDafsbGxsc9j50Oc2Shnc7h9oXoxwMLGxsY+gt0OlTZRQUtqG5K81GFjY2Ofx74qErg2BpiFu1GRxsbGxj6CnR93M9afUfNYtx1RYWNjY5/KbjdqX9NJAoNbsDbhcZ11YGNjY38VO39dsm0SZoP+tpQWoytsbGzso9nFyy6Lm9JGv21RfHFDsbGxsQ9it+1EGwPkbUZSMq8aVGFjY2OfxM43il6CKctPO9LKz/niAWBjY2MfxE4aibzw7EdOdWRbngobGxv7PHZeovZFqB0n5aFvvRs2Njb2cez9kGjW0gzH+qMbVAS92NjY2F/IztcsVJg1PM/33/wdGxsb+yR2/a9/MSqaFbZZIJHHwNjY2NhnsPOh/KzZmA2q2huRFDBsbGzss9ntQfMblLco+Q6roRI2Njb2L2a3bUnyQk/eJ7XjqheNCjY2NjZ2XEhmjco7IofiLmJjY2N/ITtpMGYHesdYKo8HXrQi2NjY2Eew63FM+ZdNoHttXIGNjY19HPsPKdLecv/lKGAAAAAASUVORK5CYII=" alt="微信分享二维码">
     </div>
 </div>
 
@@ -363,20 +336,15 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/04/23/随想录/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/05/19/为什么要使用serialVersionUID/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          随想录
+          为什么要使用serialVersionUID
         
       </div>
     </a>
   
-  
-    <a href="/2019/04/26/OpenCV/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于OpenCV对图片清晰度、色偏和亮度的检测（java版）</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 
@@ -413,7 +381,7 @@
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Tue Apr 23 2019 22:04:55 GMT+0800",
+  id: "Sun Jun 16 2019 09:34:20 GMT+0800",
   owner: 'janche',
   repo: 'gitment-blog',
   oauth: {

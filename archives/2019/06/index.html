@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>springmvc-validator | 弦上的梦</title>
+  <title>Archives: 2019/6 | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
-<meta name="keywords" content="springmvc,validator">
-<meta property="og:type" content="article">
-<meta property="og:title" content="springmvc-validator">
-<meta property="og:url" content="https://janche.github.io/2019/04/23/springmvc-validator/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="弦上的梦">
+<meta property="og:url" content="https://janche.github.io/archives/2019/06/index.html">
 <meta property="og:site_name" content="弦上的梦">
-<meta property="og:description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
-<meta property="og:updated_time" content="2019-04-26T07:34:20.272Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springmvc-validator">
-<meta name="twitter:description" content="Spring Boot 数据校验框架 springmvc-validator 使用说明使用步骤 依赖  hibernate-validation,validation-api已经被添加在spring-boot-starter-web内，所以不需要添加依赖">
+<meta name="twitter:title" content="弦上的梦">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -164,266 +159,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-springmvc-validator" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      springmvc-validator
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/" class="archive-article-date">
+  	<time datetime="2019-06-16T01:34:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/">Runtime 调用Process.waitfor导致的阻塞问题</a>
     </h1>
   
 
-        
-        <a href="/2019/04/23/springmvc-validator/" class="archive-article-date">
-  	<time datetime="2019-04-23T14:04:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Spring-Boot-数据校验框架-springmvc-validator-使用说明"><a href="#Spring-Boot-数据校验框架-springmvc-validator-使用说明" class="headerlink" title="Spring Boot 数据校验框架 springmvc-validator 使用说明"></a>Spring Boot 数据校验框架 springmvc-validator 使用说明</h1><h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><blockquote>
-<p><strong>依赖</strong></p>
-</blockquote>
-<p><code>hibernate-validation</code>,<code>validation-api</code>已经被添加在<code>spring-boot-starter-web</code>内，所以不需要添加依赖</p>
-<a id="more"></a>
-<blockquote>
-<p><strong>配置</strong></p>
-</blockquote>
-<p>SpringMVC的<code>javabean</code> 配置方式如下所示</p>
-<blockquote>
-<p>注意：快速失败方式才需要配置下面的，默认可以不用配置。</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Validator <span class="title">validator</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ValidatorFactory validatorFactory = Validation.byProvider( HibernateValidator.class )</span><br><span class="line">            .configure()</span><br><span class="line">            .addProperty( <span class="string">"hibernate.validator.fail_fast"</span>, <span class="string">"true"</span> ) <span class="comment">//为true时代表快速失败模式，false则为全部校验后再结束。</span></span><br><span class="line">            .buildValidatorFactory();</span><br><span class="line">    Validator validator = validatorFactory.getValidator();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> validator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="两种常规校验"><a href="#两种常规校验" class="headerlink" title="两种常规校验"></a>两种常规校验</h3><blockquote>
-<ol>
-<li>在<code>Controller</code>类上加入<code>@Validated</code>注解</li>
-<li>在方法参数中添加相应的注解</li>
-<li>注意：若方法参数上没有<code>@Validated</code>注解，则需要在类上加<code>@Validated</code>注解</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>参数为实体类对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRole</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@NotNull</span>(message = <span class="string">"角色名称不能为空"</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Size</span>(min = <span class="number">6</span>, max = <span class="number">20</span>, message = <span class="string">"描述必须在6-20个字符之间"</span>)</span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"create_time"</span>)</span><br><span class="line">    <span class="keyword">private</span> Date createTime;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo</span><span class="params">(@Valid SysRole sysRole, BindingResult result)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (result.hasErrors()) &#123;</span><br><span class="line">	     List&lt;ObjectError&gt; allErrors = result.getAllErrors();</span><br><span class="line">	     StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">	     <span class="keyword">for</span> (ObjectError objectError : allErrors) &#123;</span><br><span class="line">	         sb.append(objectError.getDefaultMessage() + <span class="string">";"</span>);</span><br><span class="line">	     &#125;</span><br><span class="line">	     <span class="keyword">throw</span> <span class="keyword">new</span> ServiceException(sb.toString());  <span class="comment">// 此处一定要抛出异常，否则校验框架不起作用。</span></span><br><span class="line">	 &#125;</span><br><span class="line">    <span class="comment">//do something  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>参数为单个字段<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/demo"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">demo2</span><span class="params">(@Min(value = <span class="number">1</span>, message = <span class="string">"班级最小只能1"</span>)</span></span></span><br><span class="line"><span class="function">                   @<span class="title">Max</span><span class="params">(value = <span class="number">99</span>, message = <span class="string">"班级最大只能99"</span>)</span></span></span><br><span class="line"><span class="function">                   @<span class="title">RequestParam</span><span class="params">(name = <span class="string">"classroom"</span>, required = <span class="keyword">true</span>)</span> <span class="keyword">int</span> classroom) </span>&#123;</span><br><span class="line">                 <span class="comment">//do something  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="分组校验"><a href="#分组校验" class="headerlink" title="分组校验"></a>分组校验</h3><blockquote>
-<p><strong>1.新建两个接口</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RoleUpdate</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RoleAdd</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>2.实体类中给字段加入分组</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRole</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"角色ID不能为空"</span>, groups = &#123;RoleUpdate.class&#125;)</span><br><span class="line">    <span class="keyword">protected</span> String id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotEmpty</span>(message = <span class="string">"角色名称不能为空"</span>, groups = &#123;RoleAdd.class&#125;)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>3.Controller中的使用</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/sys/role"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SysRoleController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/add"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestResult <span class="title">add</span><span class="params">(@Validated(&#123;RoleAdd.class&#125;)</span> SysRole sysRole, BindingResult result)</span>&#123;</span><br><span class="line">        CoreUtil.validationHandler(result);</span><br><span class="line">        sysRoleService.addRole(sysRole);</span><br><span class="line">        <span class="keyword">return</span> ResultGenerator.genSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span>(<span class="string">"/update"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestResult <span class="title">update</span><span class="params">(@Validated(&#123;RoleUpdate.class&#125;)</span> SysRole sysRole, BindingResult result) </span>&#123;</span><br><span class="line">        CoreUtil.validationHandler(result);</span><br><span class="line">        sysRoleService.update(sysRole);</span><br><span class="line">        <span class="keyword">return</span> ResultGenerator.genSuccessResult();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>4.组序列的使用：</strong></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定组的验证顺序，前面组验证不通过的，后面组不进行验证</span></span><br><span class="line"><span class="meta">@GroupSequence</span>(&#123;RoleAdd.class, RoleUpdate.class, Default.class&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">GroupOrder</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="常见的注解："><a href="#常见的注解：" class="headerlink" title="常见的注解："></a>常见的注解：</h2><blockquote>
-<p>所有注解均有message这个参数，即你需要返回或捕获的内容</p>
-<ul>
-<li><code>@Null(message=&quot;&quot;)</code>   被注释的元素必须为 null     </li>
-<li><code>@NotNull</code>   被注释的元素必须不为 null     </li>
-<li><code>@AssertTrue</code>     被注释的元素必须为 true     </li>
-<li><code>@AssertFalse</code>    被注释的元素必须为 false     </li>
-<li><code>@Min(value)</code>     被注释的元素必须是一个数字，其值必须大于等于指定的最小值     </li>
-<li><code>@Max(value)</code>    被注释的元素必须是一个数字，其值必须小于等于指定的最大值     </li>
-<li><code>@DecimalMin(value)</code>  被注释的元素必须是一个数字，其值必须大于等于指定的最小值     </li>
-<li><code>@DecimalMax(value)</code>  被注释的元素必须是一个数字，其值必须小于等于指定的最大值     </li>
-<li><code>@Size(max=, min=)</code>   被注释的元素的大小必须在指定的范围内     </li>
-<li><code>@Digits (integer, fraction)</code>     被注释的元素必须是一个数字，其值必须在可接受的范围内     </li>
-<li><code>@Past</code>   被注释的元素必须是一个过去的日期     </li>
-<li><code>@Future</code>    被注释的元素必须是一个将来的日期     </li>
-<li><code>@Pattern(regex=,flag=)</code>  被注释的元素必须符合指定的正则表达式     </li>
-<li><code>@Email</code>  被注释的元素必须是电子邮箱地址     </li>
-<li><code>@Length(min=,max=)</code>  被注释的字符串的大小必须在指定的范围内     </li>
-<li><code>@NotEmpty</code>   被注释的字符串的必须非空     </li>
-<li><code>@Range(min=,max=,message=)</code>  被注释的元素必须在合适的范围内</li>
-</ul>
-</blockquote>
-<h2 id="异常信息处理"><a href="#异常信息处理" class="headerlink" title="异常信息处理"></a>异常信息处理</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(exception <span class="keyword">instanceof</span> ConstraintViolationException)&#123;</span><br><span class="line">    ConstraintViolationException exs = (ConstraintViolationException) exception;</span><br><span class="line">    Set&lt;ConstraintViolation&lt;?&gt;&gt; violations = exs.getConstraintViolations();</span><br><span class="line">    <span class="keyword">for</span> (ConstraintViolation&lt;?&gt; item : violations) &#123;</span><br><span class="line">        <span class="comment">//打印验证不通过的信息</span></span><br><span class="line">        System.out.println(item.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+        <div class="article-info info-on-right">
+          
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/images/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/images/weixinpay.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">springmvc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">validator</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aQW6EMAwF0Ln/pem21Qjm22Eq4bysEGKKHws3tvN6xev4td7vnz2Z/Or9+v352xYGBsZjGcflqjKqf//sXXlsGBgY+zDOXp9f5wm0moKvY8PAwMBYp56RqhtHDAwMjB6jly7zBI2BgYFRLWKTBly1YZc34G6rxTEwMB7IyIP4/+uvzDcwMDAexTiKq1eO5kPKo7UwMDBmM3pjyCTQXohL8WBgYAxlJCm1V9AmpeZtRzowMDBGM9ZHktefo9pu6x0Xw8DAmM3oHR7tbRzzhn659YaBgTGa0UuySbjVj3LDNhEDA2M0Y72wrKbRXjFcTr4YGBgjGEk7LC9Bq4l1ZbT5570YGBijGdXasNp6S5Jmr0hu/ifBwMB4IGM9/eVttWq6LLT2MDAwtmH0kmB1DNnbgH64g4GBsQEj3wJWw10ZIRTAGBgYoxl5UbrCSErc6rABAwNjN0ZvMNl7fd7zWxqdYmBgjGMkQ8f8BSuHMKojz2jHioGBMY7RK2JXxgnVcKOEi4GBMZRxQ8pbaMz1UjkGBsZujN6gsQpb30SeRouBgTGUcRRX/m2ST3NbisfAwBjNyFfvkMS9ZWpeMGNgYMxjJEk2b8b1ytfCThYDA2NjRvXgRZLFv7Ht+1DKYmBgYMRHNHpNt5WzExgYGBjrCTE/otErhjEwMHZgJEVsHkT04oX0ioGBsRsjT6P5M9Xnr+/nowgMDIxxjB8gFwPx0RUSegAAAABJRU5ErkJggg==" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/04/23/随想录/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          随想录
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/04/26/OpenCV/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">基于OpenCV对图片清晰度、色偏和亮度的检测（java版）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
-  <div id="gitment-ctn"></div> 
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://jjeejj.github.io/js/gitment.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "Tue Apr 23 2019 22:04:55 GMT+0800",
-  owner: 'janche',
-  repo: 'gitment-blog',
-  oauth: {
-    client_id: 'c455ec8a4dddd5ee4b5e',
-    client_secret: '487469380631f670293e27f4149c3d3413ca236e',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-  
+    
 
 
           </div>
@@ -446,8 +224,8 @@ gitment.render('gitment-ctn')
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
