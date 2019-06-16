@@ -21,7 +21,8 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190616220832849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0OTk3OTA2,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190616213043110.png">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190616225106606.png">
-<meta property="og:updated_time" content="2019-06-16T15:08:56.217Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190616231743342.png">
+<meta property="og:updated_time" content="2019-06-16T15:22:15.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo(yilia)+Github实现相册和音频功能">
 <meta name="twitter:description" content="效果图，请先点这里：https://janche.github.io/photos/ 1. 需要准备的资料 1. 本文为hexo-theme-yilia主题，其他hexo主题请另行百度2. GitHub上新建一个仓库存储照片（此仓库的作用除了储存还负责更新hexo博客引用的图片链接地址），为了少走弯路，请直接fork原作者的仓库(https://github.com/lawlite19/Blog-">
@@ -206,7 +207,8 @@
 <blockquote>
 <p><strong>1. 将<code>blog_photos_copy</code>目录下的5个文件拷贝到hexo博客刚新建的<code>photos</code>目录下，注意，只有第一次配置时需要执行这一步，后续新增照片均不需要。</strong><br><strong>2. 新加的照片按照<code>YYYY-MM-dd_照片文字描述.jpg</code>格式添加到<code>Blog-Photo</code>的<code>photos</code>目录</strong><br><strong>3. 运行Python命令：<code>python tool.py</code>，期间可能需要下载部分python的依赖，根据错误，百度下载就好了。</strong> </p>
 </blockquote>
-<h3 id="3-配置hexo博客的-config-yml"><a href="#3-配置hexo博客的-config-yml" class="headerlink" title="3. 配置hexo博客的_config.yml"></a>3. 配置hexo博客的<code>_config.yml</code></h3><p><img src="https://img-blog.csdnimg.cn/20190616225106606.png" alt="图片3"><br>到这里，终于可以在博客上看到你自己的照片墙啦。</p>
+<h3 id="3-配置hexo博客"><a href="#3-配置hexo博客" class="headerlink" title="3. 配置hexo博客"></a>3. 配置hexo博客</h3><h4 id="3-1-修改yilia主题的-config-yml"><a href="#3-1-修改yilia主题的-config-yml" class="headerlink" title="3.1 修改yilia主题的_config.yml"></a>3.1 修改<code>yilia</code>主题的<code>_config.yml</code></h4><p><img src="https://img-blog.csdnimg.cn/20190616225106606.png" alt="图片3"></p>
+<h4 id="3-2-将empty-png图片也放于之前的source目录下"><a href="#3-2-将empty-png图片也放于之前的source目录下" class="headerlink" title="3.2 将empty.png图片也放于之前的source目录下"></a>3.2 将empty.png图片也放于之前的<code>source</code>目录下</h4><p><img src="https://img-blog.csdnimg.cn/20190616231743342.png" alt="empty.png"><br>empty.png下载地址：<a href="https://raw.githubusercontent.com/Janche/janche.github.io/master/assets/img/empty.png" target="_blank" rel="external">https://raw.githubusercontent.com/Janche/janche.github.io/master/assets/img/empty.png</a><br>到这里，终于可以在博客上看到你自己的照片墙啦。</p>
 <h3 id="4-为hexo博客添加音频播放"><a href="#4-为hexo博客添加音频播放" class="headerlink" title="4. 为hexo博客添加音频播放"></a>4. 为hexo博客添加音频播放</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--音乐播放插件--&gt;</span><br><span class="line">&lt;div style=&quot;margin-top:30px;&quot;&gt;                                                       </span><br><span class="line">  &lt;iframe frameborder=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=&quot;330&quot; height=&quot;86&quot; src=&quot;//music.163.com/outchain/player?type=2&amp;id=5232465&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p><strong>你没有看错，就只有这三行代码，你想在那篇文章加音乐，直接添加这三行就行了，<code>src</code>后的链接为歌曲的外链地址，很多歌曲都因为版权而无法生成外链地址。 </strong></p>
 <p>参考文章：</p>
