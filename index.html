@@ -166,6 +166,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring-Security-JWT-完成RBAC动态授权" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/24/Spring-Security-JWT-完成RBAC动态授权/">Spring Security + JWT 完成RBAC动态授权</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/24/Spring-Security-JWT-完成RBAC动态授权/" class="archive-article-date">
+  	<time datetime="2019-07-24T11:49:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>此篇文章为spring security系列的第一篇，着重讲解如何通过spring security完成企业级项目的权限控制，以及采用Redis的方式控制JWT的失效。</p>
+<h3 id="1-什么是RBAC"><a href="#1-什么是RBAC" class="headerlink" title="1. 什么是RBAC"></a>1. 什么是RBAC</h3><p>RBAC（Role-Based Access Control ）基于角色的权限控制，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。</p>
+<h3 id="2-JWT-和-Spring-Security"><a href="#2-JWT-和-Spring-Security" class="headerlink" title="2. JWT 和 Spring Security"></a>2. JWT 和 Spring Security</h3><p>spring security 授权主要分为两种，一种是security内部负责维护登录用户的session，一种则是采用JWT的方式，不管理session。关于JWT 和 Security的详细资料请小伙伴们自行查阅（相关网址推荐：<a href="http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html）">http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html）</a><br>此处就不在赘述，好了下面开始正文吧。</p>
+        
+          <a class="article-more-a" href="/2019/07/24/Spring-Security-JWT-完成RBAC动态授权/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spring-security</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jwt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">OAuth2</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/24/Spring-Security-JWT-完成RBAC动态授权/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hexo-Github实现相册和音频功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -999,19 +1085,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">嵌套分页查询</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">validator</a>
+                <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1023,7 +1097,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">序列化</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">嵌套分页查询</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1031,11 +1109,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+                <a href="javascript:void(0)" class="js-tag color5">springmvc</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">图像清晰度、亮度、色偏检测</a>
+                <a href="javascript:void(0)" class="js-tag color5">validator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">序列化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1047,7 +1129,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
+                <a href="javascript:void(0)" class="js-tag color2">OpenCV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">图像清晰度、亮度、色偏检测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">spring-security</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jwt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">OAuth2</a>
               </li>
             
             <div class="clearfix"></div>
