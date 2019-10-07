@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://janche.github.io">
-  <title>Tag: Runtime | 弦上的梦</title>
+  <title>spring-boot集成mybatis通用mapper和pagehelper | 弦上的梦</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="弦上的梦">
-<meta property="og:url" content="https://janche.github.io/tags/Runtime/index.html">
+  <meta name="description" content="1. 项目所需依赖1234567891011121314151617181920&amp;lt;!-- mybatis 依赖 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;">
+<meta name="keywords" content="springboot,mybatis,pagehelper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-boot集成mybatis通用mapper和pagehelper">
+<meta property="og:url" content="https://janche.github.io/2019/10/07/spring-boot集成mybatis通用mapper和pagehelper/index.html">
 <meta property="og:site_name" content="弦上的梦">
+<meta property="og:description" content="1. 项目所需依赖1234567891011121314151617181920&amp;lt;!-- mybatis 依赖 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;">
+<meta property="og:updated_time" content="2019-10-07T11:24:48.175Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="弦上的梦">
+<meta name="twitter:title" content="spring-boot集成mybatis通用mapper和pagehelper">
+<meta name="twitter:description" content="1. 项目所需依赖1234567891011121314151617181920&amp;lt;!-- mybatis 依赖 --&amp;gt;&amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.mybatis.spring.boot&amp;lt;/groupId&amp;gt;	&amp;lt;artifactId&amp;gt;mybatis-spring-boot-starter&amp;lt;/artifactId&amp;">
   
     <link rel="alternative" href="/atom.xml" title="弦上的梦" type="application/atom+xml">
   
@@ -164,60 +169,220 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-spring-boot集成mybatis通用mapper和pagehelper" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/" class="archive-article-date">
-  	<time datetime="2019-06-16T01:34:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/16/Runtime-调用Process-waitfor导致的阻塞问题/">Runtime 调用Process.waitfor导致的阻塞问题</a>
+    <h1 class="article-title" itemprop="name">
+      spring-boot集成mybatis通用mapper和pagehelper
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/07/spring-boot集成mybatis通用mapper和pagehelper/" class="archive-article-date">
+  	<time datetime="2019-10-07T11:23:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-项目所需依赖"><a href="#1-项目所需依赖" class="headerlink" title="1. 项目所需依赖"></a>1. 项目所需依赖</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- mybatis 依赖 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.0.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- mybatis pagehelper 分页插件 --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;com.github.pagehelper&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;pagehelper-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.2.10&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- mybatis 通用mapper --&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">&lt;groupId&gt;tk.mybatis&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;mapper-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;2.1.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-yml文件中的配置"><a href="#2-yml文件中的配置" class="headerlink" title="2.  yml文件中的配置"></a>2.  <code>yml</code>文件中的配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">###  Pagehelper  ###</span><br><span class="line">pagehelper:</span><br><span class="line">  helperDialect: mysql</span><br><span class="line">  reasonable: <span class="keyword">true</span></span><br><span class="line">  supportMethodsArguments: <span class="keyword">true</span></span><br><span class="line">  params: count=countSql</span><br><span class="line">  </span><br><span class="line">###   Mybatis Config  ###</span><br><span class="line">mybatis:</span><br><span class="line">  typeAliasesPackage: com.example.janche.**.domain   # 实体类的包路径</span><br><span class="line">  mapperLocations: classpath:mapper<span class="comment">/**/*.xml                # mapper 的文件路径</span></span><br><span class="line"><span class="comment">  </span></span><br><span class="line"><span class="comment">###   通用 Mapper    ###</span></span><br><span class="line"><span class="comment">mapper:</span></span><br><span class="line"><span class="comment">  IDENTITY: mysql</span></span><br><span class="line"><span class="comment">  notEmpty: false</span></span><br><span class="line"><span class="comment">  mappers:                                                           # 此处可以配置多个通用mapper，因为很多时候，一个是无法满足需求的，后文会介绍到</span></span><br><span class="line"><span class="comment">    - com.example.janche.common.core.Mapper</span></span><br><span class="line"><span class="comment">    - com.example.janche.common.core.TkMapper</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-继承通用-mapper"><a href="#3-继承通用-mapper" class="headerlink" title="3. 继承通用 mapper"></a>3. 继承通用 <code>mapper</code></h3><p>新建两个通用 <code>Mapper</code>的接口 ，注意此Mapper的路径需要同UserMapper等业务Mapper的位置区分开。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.janche.common.core;</span><br><span class="line"><span class="keyword">import</span> tk.mybatis.mapper.common.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Mapper</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span></span></span><br><span class="line"><span class="class">        <span class="title">BaseMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">MySqlMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">IdsMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">ConditionMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">ExampleMapper</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.janche.common.core;</span><br><span class="line"><span class="keyword">import</span> tk.mybatis.mapper.common.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TkMapper</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span></span></span><br><span class="line"><span class="class">        <span class="title">BaseMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">MySqlMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">ConditionMapper</span>&lt;<span class="title">T</span>&gt;,</span></span><br><span class="line"><span class="class">        <span class="title">ExampleMapper</span>&lt;<span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>上面两个mapper中，第一个多继承了IdsMapper，其余都是一样的，那为什么需要TkMapper呢，因为继承了IdsMapper的业务Mapper，其实体类中必须且只能有一个主键ID，联合主键或者没有主键都不行，否则启动会报错。</strong></p>
+<h3 id="4-通用Mapper的使用"><a href="#4-通用Mapper的使用" class="headerlink" title="4. 通用Mapper的使用"></a>4. 通用Mapper的使用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.janche.user.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.janche.common.core.Mapper;</span><br><span class="line"><span class="keyword">import</span> com.example.janche.user.domain.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">User</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.janche.user.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.janche.common.core.TkMapper;</span><br><span class="line"><span class="keyword">import</span> com.example.janche.user.domain.UserAndRole;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserAndRoleMapper</span> <span class="keyword">extends</span> <span class="title">TkMapper</span>&lt;<span class="title">UserAndRole</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-PageHelper的使用"><a href="#4-PageHelper的使用" class="headerlink" title="4. PageHelper的使用"></a>4. PageHelper的使用</h3><h4 id="4-1-获取用户列表："><a href="#4-1-获取用户列表：" class="headerlink" title="4.1 获取用户列表："></a>4.1 获取用户列表：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UserController 层接口：</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/list"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> RestResult <span class="title">list</span><span class="params">(@ApiParam(value = <span class="string">"分页信息"</span>)</span> PageParam pageParam,</span></span><br><span class="line"><span class="function">                       @<span class="title">ApiParam</span><span class="params">(value = <span class="string">"筛选条件"</span>)</span> String query) </span>&#123;</span><br><span class="line">    List&lt;User&gt; list = userService.list(pageParam, query);</span><br><span class="line">    PageInfo pageInfo = <span class="keyword">new</span> PageInfo(list);</span><br><span class="line">    <span class="keyword">return</span> ResultGenerator.genSuccessResult(pageInfo);</span><br><span class="line">&#125;</span><br><span class="line">----------------------------------------------------------------------------</span><br><span class="line"><span class="comment">// UserServiceImpl 实现类：</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper; </span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">list</span><span class="params">(PageParam pageParam, String query)</span> </span>&#123;</span><br><span class="line">     Example example = <span class="keyword">new</span> Example(User.class);</span><br><span class="line">     example.or().andLike(<span class="string">"username"</span>, <span class="string">"%"</span>+query+<span class="string">"%"</span>);</span><br><span class="line">     example.or().andLike(<span class="string">"actualName"</span>, <span class="string">"%"</span>+query+<span class="string">"%"</span>);</span><br><span class="line">     example.or().andLike(<span class="string">"sex"</span>, <span class="string">"%"</span>+query+<span class="string">"%"</span>);</span><br><span class="line">     </span><br><span class="line">	 <span class="comment">// PageHelper 只须在查询语句真正执行前调用即可完成分页</span></span><br><span class="line">     PageHelper.startPage(pageParam.getPage(), pageParam.getSize(), pageParam.getOrderBy());</span><br><span class="line">     <span class="keyword">return</span> userMapper.selectByExample(example);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>到此，整个接口的调用，不用写一句SQL代码，只要是单表操作，均可通过pagehelper+通用mapper的形式实现。</strong></p>
+<h4 id="4-2-批量删除用户"><a href="#4-2-批量删除用户" class="headerlink" title="4.2 批量删除用户"></a>4.2 批量删除用户</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UserServiceImpl 实现类：</span></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserMapper userMapper;  <span class="comment">// 继承自Mapper</span></span><br><span class="line"><span class="meta">@Resource</span></span><br><span class="line"><span class="keyword">private</span> UserAndRoleMapper userAndRoleMapper; <span class="comment">// 继承自TkMapper</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 批量删除用户</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> ids</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteUser</span><span class="params">(String ids)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; Ids = Arrays.stream(ids.split(<span class="string">","</span>)).collect(Collectors.toList());</span><br><span class="line">    <span class="comment">// 删除用户和角色的关联</span></span><br><span class="line">    Example example = <span class="keyword">new</span> Example(UserAndRole.class);</span><br><span class="line">    example.and().andIn(<span class="string">"userId"</span>, Ids);</span><br><span class="line">    userAndRoleMapper.deleteByExample(example);</span><br><span class="line">    <span class="comment">// 删除用户</span></span><br><span class="line">    userMapper.deleteByIds(ids);</span><br><span class="line">&#125;</span><br><span class="line">------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">// UserAndRole 实体类</span></span><br><span class="line"><span class="meta">@Table</span>(name = <span class="string">"user_role"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAndRole</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"role_id"</span>)</span><br><span class="line">    <span class="keyword">private</span> Long roleId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"user_id"</span>)</span><br><span class="line">    <span class="keyword">private</span> Long userId;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>上面的例子使用到了TkMapper，因为UserAndRole实体类中没有唯一主键ID，它是联合主键，IdsMapper中会根据主键Ids批量删除，因此UserAndRoleMapple不能继承 继承过IdsMapper的 Mapper。</strong></p>
+<blockquote>
+<p><strong>一套整合完善的springboot2脚手架工程，源码地址如下：<a href="https://github.com/Janche/springboot-security-project" target="_blank" rel="external">GitHub项目地址</a></strong></p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/weixinpay.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Runtime</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pagehelper</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJklEQVR42u3aUXLiQAwEUO5/afYAWaBb41TF4vmLCgbPGz46kubxiK/niyu///09+VPalRxd2NjY2DdhP99e7xmzv/98/X47fr7bbtx/vg0bGxt7HTt5QLtZyZ2v7m/TJ7dgY2NjYyfbkQRM8qn8wsbGxsY+Z+clRL4peesKGxsbGzsPhvzddrPydn/7bdjY2Ni72flU9O+//pX5NjY2NvYfZl/VuJkdvsmLmfzoT6TAxsbGXsSeDVbbtn4yoG1HubPSBRsbG3sfO2/Qt63/k4FB8tm2fHrkeYuNjY19Q/a1JcFsiJuEWbu2DxUYNjY29gp225rJsyBvPyVLPBnZYmNjY+9mtw2a32gtzWJp9gNgY2Nj72Pn7fh8vNouqG0nJRtaxB42Njb2zdl58OQDgOQb8lIk4bU/DzY2NvZWdj58bQeredi0gZdsLjY2NvZudt6CmTXuc9jJ+HY2qMDGxsbewW7HrkmpkAdeEoGzzfqwEmxsbOyl7GsxyVa2gKuG0NjY2Nib2G3ZkANmi2vbQ/mhH2xsbOzd7Pp0z2gp+XJP1pNvATY2NvYOdj5STZr1bfhd+6ziwsbGxv4CdltmtG2p/LjPbD3FSSVsbGzsFezZcZkkeE624GTYHJ1RwsbGxl7EzgOjDZ6rAul8W1/mNjY2NvYKdvKlJyXBrGlVY/LnYmNjYy9it53z9rNtMZPHYR6u0agYGxsbewW7LTbOx65JUCVLT0Ju2GDCxsbGvhX7JAzyrWmHu7OIrVtd2NjY2Ddn5wco8ziZNarae44CFRsbG3sp+6Tdn2/WSYOpHT+/dGFjY2OvY+dxcj64zYPqZFDxIdKwsbGx17HP2/15QdIeqWnHwEnEYmNjY+9gP8srb0Ilhc3scGcbe0XthY2NjX1D9vnxmrwUueqYTtvMasMSGxsb+47sPLTytv5JwMxKjrrUwcbGxl7Hbo85zoqWWezNWktRgGFjY2N/JXsWG7NonCGjcTU2Njb2F7OT+5NFt4OEWXsLGxsb+3vYeVHRDgny4e6sCJkND7CxsbE3sU/+0Z817tvDNCdHgmYNKWxsbOybsP8Brv+wvDebClAAAAAASUVORK5CYII=" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/10/07/基于Spring-Security-OAuth2的SSO单点登录（客户端）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          基于Spring-Security-OAuth2的SSO单点登录（客户端）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+<script src="https://jjeejj.github.io/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "Mon Oct 07 2019 19:23:06 GMT+0800",
+  owner: 'janche',
+  repo: 'gitment-blog',
+  oauth: {
+    client_id: 'c455ec8a4dddd5ee4b5e',
+    client_secret: '487469380631f670293e27f4149c3d3413ca236e',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -240,9 +405,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
